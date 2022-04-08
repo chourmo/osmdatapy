@@ -2,9 +2,11 @@
 osmdatapy
 A fast and simple to parse OSM data from pbf files into Pandas Dataframes
 """
-import sys
+import sys, os
 from setuptools import setup, find_packages
 import versioneer
+
+from Cython.Build import cythonize
 
 short_description = "A fast and simple to parse OSM data from pbf files into Pandas Dataframes".split("\n")[0]
 
@@ -17,6 +19,13 @@ try:
         long_description = handle.read()
 except:
     long_description = None
+
+requirements = [
+    "numpy",
+    "pandas",
+    "geopandas>=0.10.0",
+    "pygeos",
+]
 
 
 setup(
@@ -46,7 +55,7 @@ setup(
 
     # Additional entries you may want simply uncomment the lines you want and fill in the data
     # url='http://www.my_package.com',  # Website
-    # install_requires=[],              # Required packages, pulls from pip if needed; do not use for Conda deployment
+    install_requires=requirements,              # Required packages, pulls from pip if needed; do not use for Conda deployment
     # platforms=['Linux',
     #            'Mac OS-X',
     #            'Unix',
@@ -55,5 +64,11 @@ setup(
 
     # Manual control if final package is compressible or not, set False to prevent the .egg from being made
     # zip_safe=False,
+    ext_modules=cythonize(
+        os.path.join("osmdatapy", "*.pyx"),
+        annotate=False,
+        compiler_directives={
+            "language_level": "3",
+        })
 
 )
