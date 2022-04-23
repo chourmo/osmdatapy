@@ -1,6 +1,6 @@
 """
 osmdatapy
-A fast and simple to parse OSM data from pbf files into Pandas Dataframes
+A fast and simple way to parse OSM pbf files into Pandas Dataframes
 """
 import sys, os
 from setuptools import setup, find_packages
@@ -8,7 +8,7 @@ import versioneer
 
 from Cython.Build import cythonize
 
-short_description = "A fast and simple to parse OSM data from pbf files into Pandas Dataframes".split("\n")[0]
+short_description = "A fast and simple way to parse OSM pbf files into Pandas Dataframes".split("\n")[0]
 
 # from https://github.com/pytest-dev/pytest-runner#conditional-requirement
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
@@ -21,6 +21,7 @@ except:
     long_description = None
 
 requirements = [
+    "cython",
     "numpy",
     "pandas",
     "geopandas>=0.10.0",
@@ -61,14 +62,14 @@ setup(
     #            'Unix',
     #            'Windows'],            # Valid platforms your code works on, adjust to your flavor
     # python_requires=">=3.5",          # Python version restrictions
-
-    # Manual control if final package is compressible or not, set False to prevent the .egg from being made
-    # zip_safe=False,
+    
     ext_modules=cythonize(
         os.path.join("osmdatapy", "*.pyx"),
         annotate=False,
         compiler_directives={
             "language_level": "3",
-        })
+        }),
 
+    # Manual control if final package is compressible or not, set False to prevent the .egg from being made
+    zip_safe=False,
 )
