@@ -2,8 +2,7 @@ import copy
 import numpy as np
 from typing import Optional, Union
 
-from .query_defaults import HIGHWAYS, BUILDINGS, POIS, NOT_AREA, IS_AREA
-from .protobuf import pack_tag_val
+from osmdatapy.default_tags import HIGHWAYS, BUILDINGS, POIS, NOT_AREA, IS_AREA, IS_AREA_KEY_ANY_VALUE, RELATION_AREA, RELATION_LINESTRING
 
 
 class Query:
@@ -259,7 +258,7 @@ class Query:
 
         if not q["nodes"]:
             q["node_offsets"] = []
-            q["dense_offsets"] = None
+            len(q["dense_offsets"]) ==0
         elif q["node_set"]:
             q["node_offsets"] = [
                 n for n in block["node_offsets"] if n[0] in q["node_set"]

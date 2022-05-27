@@ -1,8 +1,10 @@
 # Scalar Primitives PBF parsers
 
-
+import numpy as np
 from array import array
-from .protobuf import scalar, packed, get_key, keyvals, bytelist
+
+import pyximport; pyximport.install()
+from osmdatapy.protobuf import scalar, packed, get_key, pack_tag_val
 
 
 def node(block, length, query):

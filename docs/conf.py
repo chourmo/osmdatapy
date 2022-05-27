@@ -166,7 +166,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     (master_doc, 'osmdatapy', 'osmdatapy Documentation',
-     author, 'osmdatapy', 'A fast and simple to parse OSM data from pbf files into Pandas Dataframes',
+     author, 'osmdatapy', 'A fast and simple way to parse OSM data from pbf files into Pandas Dataframes',
      'Miscellaneous'),
 ]
 

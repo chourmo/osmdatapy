@@ -1,14 +1,15 @@
 """
 osmdatapy
-A fast and simple way to parse OSM pbf files into Pandas Dataframes
+A fast and simple way to parse OSM data from pbf files into Pandas Dataframes
 """
-import sys, os
+import sys
 from setuptools import setup, find_packages
 import versioneer
 
-from Cython.Build import cythonize
+import os
+#from Cython.Build import cythonize
 
-short_description = "A fast and simple way to parse OSM pbf files into Pandas Dataframes".split("\n")[0]
+short_description = "A fast and simple way to parse OSM data from pbf files into Pandas Dataframes".split("\n")[0]
 
 # from https://github.com/pytest-dev/pytest-runner#conditional-requirement
 needs_pytest = {'pytest', 'test', 'ptr'}.intersection(sys.argv)
@@ -19,15 +20,6 @@ try:
         long_description = handle.read()
 except:
     long_description = None
-
-requirements = [
-    "cython",
-    "numpy",
-    "pandas",
-    "geopandas>=0.10.0",
-    "pygeos",
-]
-
 
 setup(
     # Self-descriptive entries which should always be present
@@ -49,27 +41,22 @@ setup(
     # Optional include package data to ship with your package
     # Customize MANIFEST.in if the general case does not suit your needs
     # Comment out this line to prevent the files from being packaged with your software
-    include_package_data=True,
+    include_package_data=False,
 
     # Allows `setup.py test` to work correctly with pytest
     setup_requires=[] + pytest_runner,
 
     # Additional entries you may want simply uncomment the lines you want and fill in the data
-    # url='http://www.my_package.com',  # Website
-    install_requires=requirements,              # Required packages, pulls from pip if needed; do not use for Conda deployment
-    # platforms=['Linux',
-    #            'Mac OS-X',
-    #            'Unix',
-    #            'Windows'],            # Valid platforms your code works on, adjust to your flavor
-    # python_requires=">=3.5",          # Python version restrictions
+    url='https://github.com/chourmo/osmdatapy',  # Website
     
-    ext_modules=cythonize(
-        os.path.join("osmdatapy", "*.pyx"),
-        annotate=False,
-        compiler_directives={
-            "language_level": "3",
-        }),
+    # Required packages, pulls from pip if needed; do not use for Conda deployment
+    install_requires=["numpy", "pandas", "geopandas>=0.10.0", "pygeos"],
+    python_requires=">=3.9",          # Python version restrictions
+
+    #ext_modules=cythonize(
+    #    os.path.join("osmdatapy", "*.pyx"), compiler_directives={"language_level": "3"}),
 
     # Manual control if final package is compressible or not, set False to prevent the .egg from being made
     zip_safe=False,
+
 )
