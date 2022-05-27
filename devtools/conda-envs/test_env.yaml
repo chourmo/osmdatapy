@@ -2,12 +2,16 @@ name: test
 channels:
 
   - conda-forge
-
   - defaults
 dependencies:
     # Base depends
   - python
   - pip
+  - numpy
+  - pandas
+  - aiohttp
+  - geopandas
+  - pygeos
 
     # Testing
   - pytest
