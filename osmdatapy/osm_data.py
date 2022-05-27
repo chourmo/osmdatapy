@@ -1,16 +1,16 @@
-import os, zlib, gc, sys
+import os, sys
 from struct import unpack
 
 import numpy as np
 import pandas as pd
 
-from .dataframe import DataFrame
-from .query import Query
-from .osm_header import parse_header, parse_blob, parse_blockheader
-from .osm_block import parse_block
+from osmdatapy.dataframe import Frame
+from osmdatapy.osm_query import Query
+from osmdatapy.osm_headers import parse_header, parse_blob, parse_blockheader, parse_cache_block
+from osmdatapy.osm_block import parse_block
 
 
-class OSM(DataFrame):
+class OSM(Frame):
     """
     An OSM object storing pbf data from a file
     initated from either a a filepath or a place name
@@ -45,7 +45,7 @@ class OSM(DataFrame):
         string_MB = 0
         MB = 1024 * 1024
 
-        for bl in osm._blocks:
+        for bl in self._blocks:
             string_MB += sys.getsizeof(bl["stringtable"]) / MB
 
         string_MB += sys.getsizeof(self.strings) / MB
@@ -55,17 +55,20 @@ class OSM(DataFrame):
         for t in ["node_offsets", "way_offsets", "rel_offsets"]:
             offset_MB += sum([sys.getsizeof(x[t]) / MB for x in self._blocks])
 
-        d = sum([x["dense_offsets"] is not None for x in self._blocks])
+        d = sum([len(x["dense_offsets"]) > 0 for x in self._blocks])
         n = sum([len(x["node_offsets"]) > 0 for x in self._blocks])
         w = sum([len(x["way_offsets"]) > 0 for x in self._blocks])
         r = sum([len(x["rel_offsets"]) > 0 for x in self._blocks])
         info.append(
-            "{0} blocks : {4} dense, {1} nodes, {2} ways, {3} relations".format(
+            "{0} blocks : {4} dense nodes, {1} nodes, {2} ways, {3} relations".format(
                 len(self._blocks), n, w, r, d
             )
         )
+        info.append('---------------------------------------')
+        info.append('Cache memory usage : {0:.1f} MB'.format(geo_MB + offset_MB + string_MB))
         info.append("{0} points, {1:.1f} MB".format(len(self._geo_index), geo_MB))
         info.append("offsets : {0:.1f} MB".format(offset_MB))
+        info.append('strings : {0:.1f} MB'.format(string_MB))
 
         print("\r\n".join(info))
 

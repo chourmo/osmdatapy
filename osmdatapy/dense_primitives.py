@@ -1,7 +1,10 @@
-# Dense Nodes and InfoPrimitives PBF parsers
+# Dense Nodes and Info Primitives PBF parsers
 
+import numpy as np
 from array import array
-from .protobuf import scalar, packed, get_key, keyvals, bytelist
+
+import pyximport; pyximport.install()
+from osmdatapy.protobuf import large_packed, get_key, keyvals
 
 
 def dense(query, block, length):
@@ -11,7 +14,7 @@ def dense(query, block, length):
         return empty_res
 
     elemid, version, time, change = None, -1, 0, 0
-    tagids, tags, vals = None, None, None, None
+    tagids, tags, vals = None, None, None
     offset = 0
 
     while offset < length:
@@ -20,7 +23,7 @@ def dense(query, block, length):
         if key == 1:
             elemid, offset = large_packed(block, offset, l, "sint64", delta=True)
         elif key == 5:
-            info, offset = denseinfo(block, offset, l, newids, query)
+            info, offset = dense_info(block, offset, l, query)
         elif key == 10:
             tagids, tags, vals, offset = keyvals(block, offset, l)
         else:
@@ -34,10 +37,9 @@ def dense(query, block, length):
     # add results to arrays
     l = len(elemid)
 
-    tags = np.column_stack(
+    ids = np.column_stack(
         [
             elemid,
-            np.repeat(0, l),
             np.repeat(0, l),
             _array_def(version, l),
             _array_def(time, l),
@@ -45,21 +47,18 @@ def dense(query, block, length):
         ]
     )
     tags = np.column_stack([tagids, tags, vals])
-    z = np.zeros_like(mems)
-    rels = np.column_stack([np.repeat(elemid, len(mems)), z, z, z])
+    tags = _filter_dense_tags(tags, query["tags"])
 
-    tags = _filter_densetags(tags, query["tags"])
-
-    return ids, tags, rels
+    return ids, tags, None
 
 
-def denseinfo(block, offset, length, query):
+def dense_info(block, offset, length, query):
 
     version, time, change = -1, 0, 0
 
     message_offset = offset + length
     if query is None or not query["metadata"]:
-        return info, message_offset
+        return message_offset, version, time, change
 
     while offset < message_offset:
         key, offset, l = get_key(block, offset)
@@ -71,7 +70,7 @@ def denseinfo(block, offset, length, query):
         elif key == 3:
             changeset, offset = large_packed(block, offset, l, "sint64", True)
         else:
-            offset += val_length
+            offset += length
 
     return message_offset, version, time, change
 
@@ -87,7 +86,7 @@ def filter_by_query(query, ids, tagids, tags, vals):
     """Returns subset of ids, tagids, tags and vals matching query"""
 
     if len(ids) == 0 or query is None:
-        return ids, tagsids, tags, vals
+        return ids, tagids, tags, vals
 
     # convert to numpy arrays
     idarr = np.asarray(ids, "int")
@@ -175,7 +174,7 @@ def _filter_all(query, tags):
     return np.in1d(tags, np.fromiter(query, dtype="int"))
 
 
-def _filter_densetags(tags, qtags):
+def _filter_dense_tags(tags, qtags):
 
     if qtags is None or qtags.shape[0] == 0 or tags.shape[0] == 0:
         return tags

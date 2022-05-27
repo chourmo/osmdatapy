@@ -1,12 +1,14 @@
 name: docs
 channels:
+  - conda-forge  - defaults
 dependencies:
     # Base depends
   - python
   - pip
-
-
-
+  - pandas
+  - numpy
+  
     # Pip-only installs
-  #- pip:
+    #- pip:
+ 
 

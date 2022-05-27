@@ -1,10 +1,10 @@
 import numpy as np
 import pandas as pd
 
-from .geometry_utils import points, linestrings, polygons, _simple_ix
+from osmdatapy.geometry_utils import points, linestrings, polygons, _simple_ix
 
 
-class DataFrame:
+class Frame:
     def to_dataframe(self, query, ids, tags, rels, ways=None):
         """Convert query results to a dataframe"""
 

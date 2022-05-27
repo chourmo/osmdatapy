@@ -1,8 +1,9 @@
+import zlib
 import array
 import numpy as np
 
-from .simple_primitives import node, way, relation
-from .dense_primitives import dense
+from osmdatapy.simple_primitives import node, way, relation
+from osmdatapy.dense_primitives import dense
 
 
 def parse_block(data, strmap, query, compression="zlib"):
@@ -12,7 +13,7 @@ def parse_block(data, strmap, query, compression="zlib"):
     Parameters :
     ----------
     data : a data buffer
-    stringmap : map from local to global string integer, created in cache
+    stringmap : map from local to global string integer, cached in OSM object
     query : a query dictionnary made from query object for this block
     compression : None or compression type string, "zlib" is the only format supported
     """
@@ -41,6 +42,7 @@ def pack_nodes(res, nodes, strmap):
     if nodes is None or not nodes:
         return None
     ids, meta, tags, vals = zip(*[x for x in nodes if x])
+    l= len(ids)
 
     ids = pack_ids(0, ids, meta)
     relids = np.repeat(range(l), 0)
@@ -92,8 +94,8 @@ def pack_dense(res, dense, query, block, strmap):
     offset, l = query["dense_offsets"]
     ids, tags, rels = dense(query, block[offset : offset + l], l)
 
-    tags[:, 1] = strmap[arr[:, 1]]
-    tags[:, 2] = strmap[arr[:, 2]]
+    tags[:, 1] = strmap[tags[:, 1]]
+    tags[:, 2] = strmap[tags[:, 2]]
 
     res.append((ids, tags, rels))
 

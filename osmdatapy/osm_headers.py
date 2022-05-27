@@ -1,6 +1,10 @@
 # Header PBF parsers
+import zlib
+import array
+import numpy as np
 
-from .protobuf import scalar, packed, get_key, keyvals, bytelist
+import pyximport; pyximport.install()
+from osmdatapy.protobuf import scalar, get_key, bytelist, large_packed
 
 
 def parse_header(data):
@@ -145,11 +149,9 @@ def parse_cache_block(data, compression="zlib"):
     lat_offset = 0
     lon_offset = 0
 
-    res = {
-        "i_id": array.array("q", []),
-        "i_lon": array.array("q", []),
-        "i_lat": array.array("q", []),
-    }
+    # store results by osm_type
+    nodes, dense, ways, relations = [], [], [], []
+    ids, lons, lats = array.array("q", []), array.array("q", []), array.array("q", [])
 
     while offset < block_length:
         key, offset, l = get_key(block, offset)
@@ -157,13 +159,22 @@ def parse_cache_block(data, compression="zlib"):
         if key == 1:
             strtable, offset = stringtable(block, offset, l)
         elif key == 2:
-            (
-                offset,
-                dense_pos,
-                node_pos,
-                way_pos,
-                rel_pos,
-            ) = cached_primitives(block, offset, l, res)
+            offset, osm_id, offset_list, ids, lons, lats = parse_primitive_group(block, offset, l)
+            if osm_id==1:
+                nodes.extend(offset_list)
+                ids.extend(ids)
+                lons.extend(lons)
+                lats.extend(lats)
+            elif osm_id==2:
+                dense.append(offset_list)
+                ids.extend(ids)
+                lons.extend(lons)
+                lats.extend(lats)
+            elif osm_id==3:
+                ways.extend(offset_list)
+            else:
+                relations.extend(offset_list)
+
         elif key == 17:
             granularity, offset = scalar(block, offset, "int32")
         elif key == 18:
@@ -173,20 +184,20 @@ def parse_cache_block(data, compression="zlib"):
         elif key == 20:
             lon_offset, offset = scalar(block, offset, "int64")
         else:
-            offset += length
+            offset += l
 
     metadata = {
         "stringtable": strtable,
         "date_granularity": date_granularity,
-        "dense_offsets": dense_pos,
-        "node_offsets": node_pos,
-        "way_offsets": way_pos,
-        "rel_offsets": rel_pos,
+        "dense_offsets": dense,
+        "node_offsets": nodes,
+        "way_offsets": ways,
+        "rel_offsets": relations,
     }
 
-    lon = _map_coord(res["i_lon"], granularity, lon_offset)
-    lat = _map_coord(res["i_lat"], granularity, lat_offset)
-    pts = np.array([np.asarray(res["i_id"]), lon, lat]).T
+    lons = _map_coord(lons, granularity, lon_offset)
+    lats = _map_coord(lats, granularity, lat_offset)
+    pts = np.array([ids, lons, lats]).T
 
     return pts, metadata
 
@@ -207,49 +218,74 @@ def stringtable(block, offset, length):
     strset.difference_update(set(["", "source", "source:date"]))
 
     if len(strset) <= 1:
-        stringtable = None
+        stringtable = []
 
     return stringtable, offset
 
 
-def cached_primitives(block, offset, length, res):
+def parse_primitive_group(block, offset, length):
+    """
+    Parse a primitive group in data for cache
+
+    Parameter:
+    -----------------
+    block : block data
+    offset : start offset of primitive group
+    length : length from offset of primitive group
+    
+    Return:
+    -----------------
+    osm_type : primitive type : 1 for node, 2 for dense nodes, 3 for ways, 4 for relations
+    offsets : 
+        if dense nodes : (offset, length)
+        else : list of (id, offset, length)
+    geometry :
+        if dense nodes or nodes : array of ids, array of longitudes, array of latitudes
+        else None, None, None
+    """
 
     group_offset = offset + length
-    elemid, dense_pos = None, None
-    node_pos = []
-    way_pos = []
-    rel_pos = []
+    results = []
+    ids = array.array("q", [])
+    lons = array.array("q", [])
+    lats = array.array("q", [])
 
     while offset < group_offset:
         key, offset, l = get_key(block, offset)
         ref_offset = offset
 
         if key == 1:
-            elemid, offset = cached_node(block, offset, l, res)
-            node_pos.append((elemid, ref_offset, l))
+            offset, elemid, lon, lat = cached_node(block, offset, l)
+            results.append((elemid, ref_offset, l))
+            ids.append(elemid)
+            lons.append(lon)
+            lats.append(lat)
         elif key == 2:
-            dense_pos = (offset, l)
-            pos = cached_dense(block, offset, l, res)
-        elif key == 3:
-            elemid, offset = cached_relway(block, offset, l)
-            way_pos.append((elemid, ref_offset, l))
-        elif key == 4:
-            elemid, offset = cached_relway(block, offset, l)
-            rel_pos.append((elemid, ref_offset, l))
-        # pass if key is changeset or key not parsed depending on query
+            offset, elemid, lon, lat = cached_dense(block, offset, l)
+            results.append((ref_offset, l))
+            ids.extend(elemid)
+            lons.extend(lon)
+            lats.extend(lat)
+        elif key == 3 or key == 4:
+            offset, elemid = cached_relation_or_way(block, offset, l)
+            results.append((elemid, ref_offset, l))
         else:
             offset += l
 
-    return offset, dense_pos, node_pos, way_pos, rel_pos
+    if key==2:
+        results = results[0]
+    
+    return offset, key, results, ids, lons, lats
 
 
-def cached_dense(block, offset, length, res):
+def cached_dense(block, offset, length):
+    """ parse dense for cache, return new offset, list of osm ids and coordinates"""
 
     message_offset = offset + length
+    elemid, lon, lat = [0],[0],[0]
 
     while offset < message_offset:
         key, offset, l = get_key(block, offset)
-
         if key == 1:
             elemid, offset = large_packed(block, offset, l, "sint64", delta=True)
         elif key == 8:
@@ -259,20 +295,16 @@ def cached_dense(block, offset, length, res):
         else:
             offset += l
 
-    res["i_id"].extend(elemid)
-    res["i_lon"].extend(lon)
-    res["i_lat"].extend(lat)
-
-    return message_offset
+    return message_offset, elemid, lon, lat
 
 
 def cached_node(block, offset, length, res):
+    """ parse a node for cache, return osm id longitude, latitude"""
 
     message_offset = offset + length
 
     while offset < message_offset:
         key, offset, l = get_key(block, offset)
-
         if key == 1:
             elemid, offset = scalar(block, offset, "sint64")
         elif key == 8:
@@ -281,21 +313,21 @@ def cached_node(block, offset, length, res):
             lon, offset = scalar(block, offset, "sint64")
         else:
             offset += l
-    res["i_id"].append(elemid)
-    res["i_lon"].append(lon)
-    res["i_lat"].append(lat)
+            elemid, lon, lat = 0,0,0
 
-    return elemid, message_offset
+    return message_offset, elemid, lon, lat
 
 
-def cached_relway(block, offset, length):
+def cached_relation_or_way(block, offset, length):
+    """ parse a way or a relation for cache, return new offset and osm id"""
 
     message_offset = offset + length
+    elemid=0
     while offset < message_offset:
         key, offset, l = get_key(block, offset)
         if key == 1:
             elemid, offset = scalar(block, offset, "int64")
-            return elemid, message_offset
+            return message_offset, elemid
         else:
             offset += l
-    return None
+    return message_offset, elemid
