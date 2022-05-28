@@ -6,8 +6,8 @@ import pandas as pd
 
 from osmdatapy.dataframe import Frame
 from osmdatapy.osm_query import Query
-from osmdatapy.osm_headers import parse_header, parse_blob, parse_blockheader, parse_cache_block
-from osmdatapy.osm_block import parse_block
+from osmdatapy.headers import parse_header, parse_blob, parse_blockheader, parse_cache_block
+from osmdatapy.block import parse_block
 
 
 class OSM(Frame):
