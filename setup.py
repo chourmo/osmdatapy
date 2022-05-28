@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 import versioneer
 
 import os
-#from Cython.Build import cythonize
+from Cython.Build import cythonize
 
 short_description = "A fast and simple way to parse OSM data from pbf files into Pandas Dataframes".split("\n")[0]
 
