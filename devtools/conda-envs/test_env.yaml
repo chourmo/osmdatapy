@@ -1,22 +1,28 @@
 name: test
 channels:
-
   - conda-forge
   - defaults
+
 dependencies:
-    # Base depends
-  - python
+    # Base
+  - python>=3.9
   - pip
   - numpy
   - pandas
-  - aiohttp
   - geopandas
   - pygeos
+
+    # Datasource
+  - aiohttp
+
 
     # Testing
   - pytest
   - pytest-cov
   - codecov
+
+    # Development
+  - cython
 
     # Pip-only installs
   #- pip:
