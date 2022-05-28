@@ -2,15 +2,18 @@ name: osmdatapy_dev
 channels:
   - conda-forge
 dependencies:
+  # base dependencies
+  - python=3.9
+  - numpy
+  - pygeos
+  - pandas
+  - geopandas
+
+  # development dependencies
   - black
   - cython
-  - numpy
+  - pytest-cov
+  - ipykernel
   - codecov
   - pytest
-  - pygeos
-  - python=3.9
-  - pandas
-  - pytest-cov
-  - geopandas
-  - ipykernel
 prefix: /opt/homebrew/Caskroom/miniforge/base/envs/osmdatapy_dev
