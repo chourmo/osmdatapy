@@ -53,8 +53,7 @@ setup(
     install_requires=["numpy", "pandas", "geopandas>=0.10.0", "pygeos"],
     python_requires=">=3.9",          # Python version restrictions
 
-    #ext_modules=cythonize(
-    #    os.path.join("osmdatapy", "*.pyx"), compiler_directives={"language_level": "3"}),
+    ext_modules=cythonize(os.path.join("osmdatapy", "*.pyx"), compiler_directives={"language_level": "3"}),
 
     # Manual control if final package is compressible or not, set False to prevent the .egg from being made
     zip_safe=False,

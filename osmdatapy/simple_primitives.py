@@ -3,7 +3,6 @@
 import numpy as np
 from array import array
 
-import pyximport; pyximport.install()
 from osmdatapy.protobuf import scalar, packed, get_key, pack_tag_val
 
 

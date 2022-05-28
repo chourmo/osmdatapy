@@ -3,7 +3,6 @@ import zlib
 import array
 import numpy as np
 
-import pyximport; pyximport.install()
 from osmdatapy.protobuf import scalar, get_key, bytelist, large_packed
 
 
