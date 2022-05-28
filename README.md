@@ -12,6 +12,8 @@ A fast and simple way to parse OpenStreetMap data from pbf files into Pandas Dat
 
 **Osmdatapy** focuses on performance and minimal memory use with a custom cython-based protobuf parser and optimal caching. A regional OSM .pbf of a few hundred MB disk size can be opened and analysed with a 16 GB laptob in a few milliseconds.
 
+OSM data can be downloaded by place name from two sources : GeoFabrik (http://geofabrik.de) and BBBike (http://bbbike.org)
+
 **Osmdatapy** provides advanced query capabilities through a reusable and composable Query object. Queries can :
 	- select osm types (node, way or relation)
 	- exclude and keep specific osm key:values pairs,
@@ -26,10 +28,7 @@ A fast and simple way to parse OpenStreetMap data from pbf files into Pandas Dat
 
 ## Usage
 
-1. Download a pdf file from the two main sources of OSM extracts : 
-	- BBBike (http://bbbike.org)
-	- GeoFabrik (http://geofabrik.de)
-	
+1. Download a pdf file from the two main sources of OSM extracts with the OSM_Datasource object	
 2. Open file in a osm object : osm = osmdatapy.OSM(filepath)
 3. optionaly extract content statistics from osm file : osm.info()
 3. Create a Query object from scratch (osmdatapy.Query) with optional defauls (osmdatapy.Query('buildings'))
