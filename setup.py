@@ -20,10 +20,10 @@ except:
     # If we couldn't import Cython, use the normal setuptools
     # and look for a pre-compiled .c file instead of a .pyx file
     from setuptools.command.build_ext import build_ext
-    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapt/protobuf.c"])]
+    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.c"])]
 else:
     # If we successfully imported Cython, look for a .pyx file
-    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapt/protobuf.pyx"])]
+    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"])]
 
 class CustomBuildExtCommand(build_ext):
     """build_ext command for use when numpy headers are needed."""
@@ -49,8 +49,6 @@ try:
         long_description = handle.read()
 except:
     long_description = None
-
-cmdclass["build_ext"] = build_ext
 
 setup(
     # Self-descriptive entries which should always be present
