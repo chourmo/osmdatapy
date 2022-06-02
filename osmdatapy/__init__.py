@@ -1,9 +1,9 @@
 """A fast and simple way to parse OSM data from pbf files into Pandas Dataframes"""
 
 # Add imports here
-from osmdatapy.osm_data import OSM
-from osmdatapy.osm_query import Query
-from osmdatapy.datasource.osm_datasource import OSM_datasource
+from osmdata import OSM
+from osmquery import Query
+from datasource.OSMdatasource import OSM_datasource
 
 # Handle versioneer
 from ._version import get_versions
