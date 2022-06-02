@@ -4,10 +4,10 @@ from struct import unpack
 import numpy as np
 import pandas as pd
 
-from dataframe import Frame
-from osmquery import Query
-from headers import parse_header, parse_blob, parse_blockheader, parse_cache_block
-from block import parse_block
+from .dataframe import Frame
+from .osmquery import Query
+from .headers import parse_header, parse_blob, parse_blockheader, parse_cache_block
+from .block import parse_block
 
 
 class OSM(Frame):

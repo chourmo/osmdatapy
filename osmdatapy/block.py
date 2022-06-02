@@ -2,8 +2,8 @@ import zlib
 import array
 import numpy as np
 
-from primitives import node, way, relation
-from dense import dense
+from .primitives import node, way, relation
+from .dense import dense
 
 
 def parse_block(data, strmap, query, compression="zlib"):

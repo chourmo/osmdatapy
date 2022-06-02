@@ -114,19 +114,19 @@ def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_
     cdef Py_ssize_t list_offset = offset + length
     
     while offset < list_offset:
-        key, offset, bytesize = _get_key(block, offset)
+        key, offset, bytesize = _pbf_key(block, offset)
         res.append(block[offset:offset+bytesize])
         offset = offset + bytesize
                 
     return res, offset
 
-def get_key(const unsigned char[:] block not None, Py_ssize_t offset):
+def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):
     """
     returns key, updated offset and the length of the value
         - for varints, length is 0
         - for length delimited values, parse length and shift offset to the start of values
     """    
-    return  _get_key(block, offset)
+    return  _pbf_key(block, offset)
 
 
 def scalar(const unsigned char[:] block not None, Py_ssize_t offset, str scalar_type):
@@ -291,7 +291,7 @@ cdef (int, int) packed_signedint64(const unsigned char[:] block, Py_ssize_t offs
 # Scalars
 
 @cython.boundscheck(False)
-cdef (int, int, int64_t) _get_key(const unsigned char[:] block, Py_ssize_t offset):
+cdef (int, int, int64_t) _pbf_key(const unsigned char[:] block, Py_ssize_t offset):
     
     cdef int64_t v, length
     cdef Py_ssize_t new_offset, key, wiretype

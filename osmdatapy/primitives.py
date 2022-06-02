@@ -3,7 +3,7 @@
 import numpy as np
 from array import array
 
-from osmdatapy.protobuf import scalar, packed, get_key, pack_tag_val
+from . import protobuf
 
 
 def node(block, length, query):
@@ -15,19 +15,19 @@ def node(block, length, query):
     offset = 0
 
     while offset < length:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
-            elemid, offset = scalar(block, offset, "int64")
+            elemid, offset = protobuf.scalar(block, offset, "int64")
 
         elif key == 2 and query["get_tags"]:
-            tags, offset = packed(block, offset, l, "uint32")
+            tags, offset = protobuf.packed(block, offset, l, "uint32")
             tag_set = set(tags)
             if not _validate_tag(tag_set, query["must_tags"]):
                 return None
 
         elif key == 3 and query["get_tags"]:
-            vals, offset = packed(block, offset, l, "uint32")
+            vals, offset = protobuf.packed(block, offset, l, "uint32")
         elif key == 4 and query["metadata"]:
             offset, version, time, change = info(block, offset, l, query)
         else:
@@ -53,10 +53,10 @@ def way(block, length, query):
     offset = 0
 
     while offset < length:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
-            elemid, offset = scalar(block, offset, "int64")
+            elemid, offset = protobuf.scalar(block, offset, "int64")
 
         elif key == 2 and query["get_tags"]:
             tags, offset = packed(block, offset, l, "uint32")
@@ -65,13 +65,13 @@ def way(block, length, query):
                 return None
 
         elif key == 3 and query["get_tags"]:
-            vals, offset = packed(block, offset, l, "uint32")
+            vals, offset = protobuf.packed(block, offset, l, "uint32")
 
         elif key == 4 and query["metadata"]:
             offset, version, time, change = info(block, offset, l, query)
 
         elif key == 8:
-            mems, offset = packed(block, offset, l, "sint64", True)
+            mems, offset = protobuf.packed(block, offset, l, "sint64", True)
 
             # ways must have at least 2 points
             if len(mems) < 2:
@@ -100,31 +100,31 @@ def relation(block, length, query):
     offset = 0
 
     while offset < length:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
-            elemid, offset = scalar(block, offset, "int64")
+            elemid, offset = protobuf.scalar(block, offset, "int64")
 
         elif key == 2 and query["get_tags"]:
-            tags, offset = packed(block, offset, l, "uint32")
+            tags, offset = protobuf.packed(block, offset, l, "uint32")
             tag_set = set(tags)
             if not _validate_tag(tag_set, query["must_tags"]):
                 return None
 
         elif key == 3 and query["get_tags"]:
-            vals, offset = packed(block, offset, l, "uint32")
+            vals, offset = protobuf.packed(block, offset, l, "uint32")
 
         elif key == 4 and query["metadata"]:
             offset, version, time, change = info(block, offset, l, query)
 
         elif key == 8:
-            roles, offset = packed(block, offset, l, "int32")
+            roles, offset = protobuf.packed(block, offset, l, "int32")
 
         elif key == 9:
-            mems, offset = packed(block, offset, l, "sint64", delta=True)
+            mems, offset = protobuf.packed(block, offset, l, "sint64", delta=True)
 
         elif key == 10:
-            types, offset = packed(block, offset, l, "enum")
+            types, offset = protobuf.packed(block, offset, l, "enum")
             type_set = set(types)
             if not _validate_tag(type_set, query["relation_type"]):
                 return None
@@ -157,14 +157,14 @@ def info(block, offset, length, query):
 
     while offset < message_offset:
 
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
-            version, offset = scalar(block, offset, "int32")
+            version, offset = protobuf.scalar(block, offset, "int32")
         elif key == 2:
-            time, offset = scalar(block, offset, "int32")
+            time, offset = protobuf.scalar(block, offset, "int32")
         elif key == 3:
-            change, offset = scalar(block, offset, "int64")
+            change, offset = protobuf.scalar(block, offset, "int64")
         else:
             offset += l
 
@@ -195,7 +195,7 @@ def _validate_tagval(query, tagset, tags, values):
 
     packed = set()
     if query["excl"] is not None or query["keep"] is not None:
-        packed = set(pack_tag_val(tags, values))
+        packed = set(protobuf.pack_tag_val(tags, values))
 
     kps = False
     if query["keep"] is not None:

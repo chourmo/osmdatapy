@@ -6,8 +6,8 @@ import sys
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
 import versioneer
-from distutils.core import setup
-from distutils.extension import Extension
+
+from Cython.Build import cythonize
 
 import os
 
@@ -24,6 +24,9 @@ except:
 else:
     # If we successfully imported Cython, look for a .pyx file
     ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"])]
+
+ext_modules+=cythonize(Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"]),
+        compiler_directives={"language_level": "3"})
 
 class CustomBuildExtCommand(build_ext):
     """build_ext command for use when numpy headers are needed."""

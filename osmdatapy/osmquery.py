@@ -2,7 +2,7 @@ import copy
 import numpy as np
 from typing import Optional, Union
 
-from defaults import HIGHWAYS, BUILDINGS, POIS, NOT_AREA, IS_AREA, IS_AREA_KEY_ANY_VALUE, RELATION_AREA, RELATION_LINESTRING
+from .defaults import HIGHWAYS, BUILDINGS, POIS, NOT_AREA, IS_AREA, IS_AREA_KEY_ANY_VALUE, RELATION_AREA, RELATION_LINESTRING
 
 
 class Query:

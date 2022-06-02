@@ -1053,7 +1053,7 @@ typedef struct __pyx_ctuple_int__and_int__and_int64_t __pyx_ctuple_int__and_int_
 struct __pyx_ctuple_int64_t__and_int;
 typedef struct __pyx_ctuple_int64_t__and_int __pyx_ctuple_int64_t__and_int;
 
-/* "osmdatapy/protobuf.pyx":176
+/* "osmdatapy/protobuf.pyx":177
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_int32(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -1065,10 +1065,10 @@ struct __pyx_ctuple_int__and_int {
   int f1;
 };
 
-/* "osmdatapy/protobuf.pyx":293
+/* "osmdatapy/protobuf.pyx":294
  * 
  * @cython.boundscheck(False)
- * cdef (int, int, int64_t) _get_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * cdef (int, int, int64_t) _pbf_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  * 
  *     cdef int64_t v, length
  */
@@ -1078,7 +1078,7 @@ struct __pyx_ctuple_int__and_int__and_int64_t {
   int64_t f2;
 };
 
-/* "osmdatapy/protobuf.pyx":319
+/* "osmdatapy/protobuf.pyx":320
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -2133,7 +2133,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
 static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx_memviewslice, int, int, int, __Pyx_memviewslice); /*proto*/
 static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32(__Pyx_memviewslice, int, int, int, __Pyx_memviewslice); /*proto*/
 static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64(__Pyx_memviewslice, Py_ssize_t, Py_ssize_t, int, __Pyx_memviewslice); /*proto*/
-static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_key(__Pyx_memviewslice, Py_ssize_t); /*proto*/
+static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__pbf_key(__Pyx_memviewslice, Py_ssize_t); /*proto*/
 static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Pyx_memviewslice, Py_ssize_t); /*proto*/
 static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__Pyx_memviewslice, Py_ssize_t); /*proto*/
 static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Pyx_memviewslice, Py_ssize_t); /*proto*/
@@ -2247,9 +2247,9 @@ static const char __pyx_k_uint32[] = "uint32";
 static const char __pyx_k_unpack[] = "unpack";
 static const char __pyx_k_update[] = "update";
 static const char __pyx_k_fortran[] = "fortran";
-static const char __pyx_k_get_key[] = "get_key";
 static const char __pyx_k_keyvals[] = "keyvals";
 static const char __pyx_k_memview[] = "memview";
+static const char __pyx_k_pbf_key[] = "pbf_key";
 static const char __pyx_k_resview[] = "resview";
 static const char __pyx_k_Ellipsis[] = "Ellipsis";
 static const char __pyx_k_bytelist[] = "bytelist";
@@ -2362,7 +2362,6 @@ static PyObject *__pyx_n_s_flags;
 static PyObject *__pyx_n_s_format;
 static PyObject *__pyx_n_s_fortran;
 static PyObject *__pyx_n_u_fortran;
-static PyObject *__pyx_n_s_get_key;
 static PyObject *__pyx_n_s_getstate;
 static PyObject *__pyx_kp_s_got_differing_extents_in_dimensi;
 static PyObject *__pyx_n_s_i;
@@ -2398,6 +2397,7 @@ static PyObject *__pyx_kp_s_osmdatapy_protobuf_pyx;
 static PyObject *__pyx_n_s_pack;
 static PyObject *__pyx_n_s_pack_tag_val;
 static PyObject *__pyx_n_s_packed;
+static PyObject *__pyx_n_s_pbf_key;
 static PyObject *__pyx_n_s_pickle;
 static PyObject *__pyx_n_s_pyx_PickleError;
 static PyObject *__pyx_n_s_pyx_checksum;
@@ -2447,7 +2447,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
 static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset, Py_ssize_t __pyx_v_length, PyObject *__pyx_v_scalar_type, int __pyx_v_delta); /* proto */
 static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset, Py_ssize_t __pyx_v_length); /* proto */
 static PyObject *__pyx_pf_9osmdatapy_8protobuf_6bytelist(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset, Py_ssize_t __pyx_v_length); /* proto */
-static PyObject *__pyx_pf_9osmdatapy_8protobuf_8get_key(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset); /* proto */
+static PyObject *__pyx_pf_9osmdatapy_8protobuf_8pbf_key(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset); /* proto */
 static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset, PyObject *__pyx_v_scalar_type); /* proto */
 static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_tags, __Pyx_memviewslice __pyx_v_vals); /* proto */
 static int __pyx_pf_7cpython_5array_5array___getbuffer__(arrayobject *__pyx_v_self, Py_buffer *__pyx_v_info, CYTHON_UNUSED int __pyx_v_flags); /* proto */
@@ -2547,7 +2547,7 @@ static PyObject *__pyx_codeobj__34;
 static PyObject *__pyx_codeobj__41;
 /* Late includes */
 
-/* "osmdatapy/protobuf.pyx":9
+/* "osmdatapy/protobuf.pyx":10
  * 
  * @cython.boundscheck(False)
  * def packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
@@ -2600,19 +2600,19 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_1packed(PyObject *__pyx_self, PyO
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 1); __PYX_ERR(0, 9, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 1); __PYX_ERR(0, 10, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 2); __PYX_ERR(0, 9, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 2); __PYX_ERR(0, 10, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scalar_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 3); __PYX_ERR(0, 9, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, 3); __PYX_ERR(0, 10, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -2622,7 +2622,7 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_1packed(PyObject *__pyx_self, PyO
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "packed") < 0)) __PYX_ERR(0, 9, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "packed") < 0)) __PYX_ERR(0, 10, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -2636,28 +2636,28 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_1packed(PyObject *__pyx_self, PyO
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 9, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
-    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 10, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L3_error)
+    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L3_error)
     __pyx_v_scalar_type = ((PyObject*)values[3]);
     if (values[4]) {
-      __pyx_v_delta = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_delta == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 9, __pyx_L3_error)
+      __pyx_v_delta = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_delta == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 10, __pyx_L3_error)
     } else {
       __pyx_v_delta = ((int)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 9, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("packed", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 10, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.packed", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 9, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 10, __pyx_L1_error)
   }
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 10, __pyx_L1_error)
   __pyx_r = __pyx_pf_9osmdatapy_8protobuf_packed(__pyx_self, __pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_scalar_type, __pyx_v_delta);
 
   /* function exit code */
@@ -2690,16 +2690,16 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("packed", 0);
 
-  /* "osmdatapy/protobuf.pyx":17
+  /* "osmdatapy/protobuf.pyx":18
  * 
  *     # maximum size of array is length if all data fits in one byte
  *     cdef array.array res_template = array.array('q', [])             # <<<<<<<<<<<<<<
  *     cdef array.array res
  *     res = array.clone(res_template, length, zero=True)
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_q);
   __Pyx_GIVEREF(__pyx_n_u_q);
@@ -2707,59 +2707,59 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_res_template = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":19
+  /* "osmdatapy/protobuf.pyx":20
  *     cdef array.array res_template = array.array('q', [])
  *     cdef array.array res
  *     res = array.clone(res_template, length, zero=True)             # <<<<<<<<<<<<<<
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_res_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_res_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":21
+  /* "osmdatapy/protobuf.pyx":22
  *     res = array.clone(res_template, length, zero=True)
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":             # <<<<<<<<<<<<<<
  *         offset, size = packed_int32(block, offset, length, delta, res)
  * 
  */
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_4 != 0);
   if (!__pyx_t_5) {
   } else {
     __pyx_t_3 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_4 = (__pyx_t_5 != 0);
   if (!__pyx_t_4) {
   } else {
     __pyx_t_3 = __pyx_t_4;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 22, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_4 != 0);
   __pyx_t_3 = __pyx_t_5;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_3) {
 
-    /* "osmdatapy/protobuf.pyx":22
+    /* "osmdatapy/protobuf.pyx":23
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":
  *         offset, size = packed_int32(block, offset, length, delta, res)             # <<<<<<<<<<<<<<
  * 
  *     elif scalar_type=="uint32":
  */
-    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 22, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 23, __pyx_L1_error)
     __pyx_t_7 = __pyx_f_9osmdatapy_8protobuf_packed_int32(__pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_delta, __pyx_t_6);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
@@ -2769,7 +2769,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":21
+    /* "osmdatapy/protobuf.pyx":22
  *     res = array.clone(res_template, length, zero=True)
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":             # <<<<<<<<<<<<<<
@@ -2779,25 +2779,25 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":24
+  /* "osmdatapy/protobuf.pyx":25
  *         offset, size = packed_int32(block, offset, length, delta, res)
  * 
  *     elif scalar_type=="uint32":             # <<<<<<<<<<<<<<
  *         offset, size = packed_uint32(block, offset, length, res)
  * 
  */
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 24, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 25, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_3 != 0);
   if (__pyx_t_5) {
 
-    /* "osmdatapy/protobuf.pyx":25
+    /* "osmdatapy/protobuf.pyx":26
  * 
  *     elif scalar_type=="uint32":
  *         offset, size = packed_uint32(block, offset, length, res)             # <<<<<<<<<<<<<<
  * 
  *     elif scalar_type=="int64":
  */
-    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 25, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 26, __pyx_L1_error)
     __pyx_t_7 = __pyx_f_9osmdatapy_8protobuf_packed_uint32(__pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_t_6);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
@@ -2807,7 +2807,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     __pyx_v_offset = __pyx_t_9;
     __pyx_v_size = __pyx_t_8;
 
-    /* "osmdatapy/protobuf.pyx":24
+    /* "osmdatapy/protobuf.pyx":25
  *         offset, size = packed_int32(block, offset, length, delta, res)
  * 
  *     elif scalar_type=="uint32":             # <<<<<<<<<<<<<<
@@ -2817,25 +2817,25 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":27
+  /* "osmdatapy/protobuf.pyx":28
  *         offset, size = packed_uint32(block, offset, length, res)
  * 
  *     elif scalar_type=="int64":             # <<<<<<<<<<<<<<
  *         offset, size = packed_int64(block, offset, length, delta, res)
  * 
  */
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 27, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 28, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_5 != 0);
   if (__pyx_t_3) {
 
-    /* "osmdatapy/protobuf.pyx":28
+    /* "osmdatapy/protobuf.pyx":29
  * 
  *     elif scalar_type=="int64":
  *         offset, size = packed_int64(block, offset, length, delta, res)             # <<<<<<<<<<<<<<
  * 
  *     elif scalar_type == "sint32":
  */
-    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 29, __pyx_L1_error)
     __pyx_t_7 = __pyx_f_9osmdatapy_8protobuf_packed_int64(__pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_delta, __pyx_t_6);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
@@ -2845,7 +2845,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":27
+    /* "osmdatapy/protobuf.pyx":28
  *         offset, size = packed_uint32(block, offset, length, res)
  * 
  *     elif scalar_type=="int64":             # <<<<<<<<<<<<<<
@@ -2855,25 +2855,25 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":30
+  /* "osmdatapy/protobuf.pyx":31
  *         offset, size = packed_int64(block, offset, length, delta, res)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
  *         offset, size = packed_signedint32(block, offset, length, delta, res)
  * 
  */
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 30, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 31, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_3 != 0);
   if (__pyx_t_5) {
 
-    /* "osmdatapy/protobuf.pyx":31
+    /* "osmdatapy/protobuf.pyx":32
  * 
  *     elif scalar_type == "sint32":
  *         offset, size = packed_signedint32(block, offset, length, delta, res)             # <<<<<<<<<<<<<<
  * 
  *     elif scalar_type == "sint64":
  */
-    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 31, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 32, __pyx_L1_error)
     __pyx_t_7 = __pyx_f_9osmdatapy_8protobuf_packed_signedint32(__pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_delta, __pyx_t_6);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
@@ -2883,7 +2883,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     __pyx_v_offset = __pyx_t_9;
     __pyx_v_size = __pyx_t_8;
 
-    /* "osmdatapy/protobuf.pyx":30
+    /* "osmdatapy/protobuf.pyx":31
  *         offset, size = packed_int64(block, offset, length, delta, res)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
@@ -2893,25 +2893,25 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":33
+  /* "osmdatapy/protobuf.pyx":34
  *         offset, size = packed_signedint32(block, offset, length, delta, res)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
  *         offset, size = packed_signedint64(block, offset, length, delta, res)
  *     else:
  */
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_5 != 0);
   if (__pyx_t_3) {
 
-    /* "osmdatapy/protobuf.pyx":34
+    /* "osmdatapy/protobuf.pyx":35
  * 
  *     elif scalar_type == "sint64":
  *         offset, size = packed_signedint64(block, offset, length, delta, res)             # <<<<<<<<<<<<<<
  *     else:
  *         size =0
  */
-    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 34, __pyx_L1_error)
+    __pyx_t_6 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_6.memview)) __PYX_ERR(0, 35, __pyx_L1_error)
     __pyx_t_7 = __pyx_f_9osmdatapy_8protobuf_packed_signedint64(__pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_delta, __pyx_t_6);
     __PYX_XDEC_MEMVIEW(&__pyx_t_6, 1);
     __pyx_t_6.memview = NULL;
@@ -2921,7 +2921,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":33
+    /* "osmdatapy/protobuf.pyx":34
  *         offset, size = packed_signedint32(block, offset, length, delta, res)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
@@ -2931,7 +2931,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":36
+  /* "osmdatapy/protobuf.pyx":37
  *         offset, size = packed_signedint64(block, offset, length, delta, res)
  *     else:
  *         size =0             # <<<<<<<<<<<<<<
@@ -2943,7 +2943,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
   }
   __pyx_L3:;
 
-  /* "osmdatapy/protobuf.pyx":38
+  /* "osmdatapy/protobuf.pyx":39
  *         size =0
  * 
  *     return res[:size], offset             # <<<<<<<<<<<<<<
@@ -2951,11 +2951,11 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_res), 0, __pyx_v_size, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_res), 0, __pyx_v_size, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 38, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 39, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -2967,7 +2967,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":9
+  /* "osmdatapy/protobuf.pyx":10
  * 
  * @cython.boundscheck(False)
  * def packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
@@ -2992,7 +2992,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_packed(CYTHON_UNUSED PyObject *__
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":41
+/* "osmdatapy/protobuf.pyx":42
  * 
  * 
  * def large_packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
@@ -3045,19 +3045,19 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_3large_packed(PyObject *__pyx_sel
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 1); __PYX_ERR(0, 41, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 1); __PYX_ERR(0, 42, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 2); __PYX_ERR(0, 41, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 2); __PYX_ERR(0, 42, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scalar_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 3); __PYX_ERR(0, 41, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, 3); __PYX_ERR(0, 42, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
@@ -3067,7 +3067,7 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_3large_packed(PyObject *__pyx_sel
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "large_packed") < 0)) __PYX_ERR(0, 41, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "large_packed") < 0)) __PYX_ERR(0, 42, __pyx_L3_error)
       }
     } else {
       switch (PyTuple_GET_SIZE(__pyx_args)) {
@@ -3081,28 +3081,28 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_3large_packed(PyObject *__pyx_sel
         default: goto __pyx_L5_argtuple_error;
       }
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 41, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
-    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 42, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
+    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
     __pyx_v_scalar_type = ((PyObject*)values[3]);
     if (values[4]) {
-      __pyx_v_delta = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_delta == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 41, __pyx_L3_error)
+      __pyx_v_delta = __Pyx_PyObject_IsTrue(values[4]); if (unlikely((__pyx_v_delta == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 42, __pyx_L3_error)
     } else {
       __pyx_v_delta = ((int)0);
     }
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 41, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("large_packed", 0, 4, 5, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 42, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.large_packed", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 41, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 42, __pyx_L1_error)
   }
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 42, __pyx_L1_error)
   __pyx_r = __pyx_pf_9osmdatapy_8protobuf_2large_packed(__pyx_self, __pyx_v_block, __pyx_v_offset, __pyx_v_length, __pyx_v_scalar_type, __pyx_v_delta);
 
   /* function exit code */
@@ -3136,16 +3136,16 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("large_packed", 0);
 
-  /* "osmdatapy/protobuf.pyx":49
+  /* "osmdatapy/protobuf.pyx":50
  * 
  *     # maximum size of array is length if all data fits in one byte
  *     cdef array.array res_template = array.array('q', [])             # <<<<<<<<<<<<<<
  *     cdef array.array res = array.clone(res_template, length, zero=True)
  *     cdef int64_t[:] resview = res
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_q);
   __Pyx_GIVEREF(__pyx_n_u_q);
@@ -3153,64 +3153,64 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_res_template = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":50
+  /* "osmdatapy/protobuf.pyx":51
  *     # maximum size of array is length if all data fits in one byte
  *     cdef array.array res_template = array.array('q', [])
  *     cdef array.array res = array.clone(res_template, length, zero=True)             # <<<<<<<<<<<<<<
  *     cdef int64_t[:] resview = res
  * 
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_res_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 50, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_res_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 51, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":51
+  /* "osmdatapy/protobuf.pyx":52
  *     cdef array.array res_template = array.array('q', [])
  *     cdef array.array res = array.clone(res_template, length, zero=True)
  *     cdef int64_t[:] resview = res             # <<<<<<<<<<<<<<
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":
  */
-  __pyx_t_3 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_3.memview)) __PYX_ERR(0, 51, __pyx_L1_error)
+  __pyx_t_3 = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(((PyObject *)__pyx_v_res), PyBUF_WRITABLE); if (unlikely(!__pyx_t_3.memview)) __PYX_ERR(0, 52, __pyx_L1_error)
   __pyx_v_resview = __pyx_t_3;
   __pyx_t_3.memview = NULL;
   __pyx_t_3.data = NULL;
 
-  /* "osmdatapy/protobuf.pyx":53
+  /* "osmdatapy/protobuf.pyx":54
  *     cdef int64_t[:] resview = res
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":             # <<<<<<<<<<<<<<
  *         offset, size = packed_int32(block, offset, length, delta, resview)
  * 
  */
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   if (!__pyx_t_6) {
   } else {
     __pyx_t_4 = __pyx_t_6;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_5 = (__pyx_t_6 != 0);
   if (!__pyx_t_5) {
   } else {
     __pyx_t_4 = __pyx_t_5;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 53, __pyx_L1_error)
+  __pyx_t_5 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_5 < 0)) __PYX_ERR(0, 54, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_5 != 0);
   __pyx_t_4 = __pyx_t_6;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_4) {
 
-    /* "osmdatapy/protobuf.pyx":54
+    /* "osmdatapy/protobuf.pyx":55
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":
  *         offset, size = packed_int32(block, offset, length, delta, resview)             # <<<<<<<<<<<<<<
@@ -3223,7 +3223,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":53
+    /* "osmdatapy/protobuf.pyx":54
  *     cdef int64_t[:] resview = res
  * 
  *     if scalar_type=="int32" or scalar_type=="enum" or scalar_type=="bool":             # <<<<<<<<<<<<<<
@@ -3233,18 +3233,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":56
+  /* "osmdatapy/protobuf.pyx":57
  *         offset, size = packed_int32(block, offset, length, delta, resview)
  * 
  *     elif scalar_type=="uint32":             # <<<<<<<<<<<<<<
  *         offset, size = packed_uint32(block, offset, length, resview)
  * 
  */
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 57, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_4 != 0);
   if (__pyx_t_6) {
 
-    /* "osmdatapy/protobuf.pyx":57
+    /* "osmdatapy/protobuf.pyx":58
  * 
  *     elif scalar_type=="uint32":
  *         offset, size = packed_uint32(block, offset, length, resview)             # <<<<<<<<<<<<<<
@@ -3257,7 +3257,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     __pyx_v_offset = __pyx_t_9;
     __pyx_v_size = __pyx_t_8;
 
-    /* "osmdatapy/protobuf.pyx":56
+    /* "osmdatapy/protobuf.pyx":57
  *         offset, size = packed_int32(block, offset, length, delta, resview)
  * 
  *     elif scalar_type=="uint32":             # <<<<<<<<<<<<<<
@@ -3267,18 +3267,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":59
+  /* "osmdatapy/protobuf.pyx":60
  *         offset, size = packed_uint32(block, offset, length, resview)
  * 
  *     elif scalar_type=="int64":             # <<<<<<<<<<<<<<
  *         offset, size = packed_int64(block, offset, length, delta, resview)
  * 
  */
-  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 59, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 60, __pyx_L1_error)
   __pyx_t_4 = (__pyx_t_6 != 0);
   if (__pyx_t_4) {
 
-    /* "osmdatapy/protobuf.pyx":60
+    /* "osmdatapy/protobuf.pyx":61
  * 
  *     elif scalar_type=="int64":
  *         offset, size = packed_int64(block, offset, length, delta, resview)             # <<<<<<<<<<<<<<
@@ -3291,7 +3291,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":59
+    /* "osmdatapy/protobuf.pyx":60
  *         offset, size = packed_uint32(block, offset, length, resview)
  * 
  *     elif scalar_type=="int64":             # <<<<<<<<<<<<<<
@@ -3301,18 +3301,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":62
+  /* "osmdatapy/protobuf.pyx":63
  *         offset, size = packed_int64(block, offset, length, delta, resview)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
  *         offset, size = packed_signedint32(block, offset, length, delta, resview)
  * 
  */
-  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 62, __pyx_L1_error)
+  __pyx_t_4 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_4 < 0)) __PYX_ERR(0, 63, __pyx_L1_error)
   __pyx_t_6 = (__pyx_t_4 != 0);
   if (__pyx_t_6) {
 
-    /* "osmdatapy/protobuf.pyx":63
+    /* "osmdatapy/protobuf.pyx":64
  * 
  *     elif scalar_type == "sint32":
  *         offset, size = packed_signedint32(block, offset, length, delta, resview)             # <<<<<<<<<<<<<<
@@ -3325,7 +3325,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     __pyx_v_offset = __pyx_t_9;
     __pyx_v_size = __pyx_t_8;
 
-    /* "osmdatapy/protobuf.pyx":62
+    /* "osmdatapy/protobuf.pyx":63
  *         offset, size = packed_int64(block, offset, length, delta, resview)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
@@ -3335,18 +3335,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":65
+  /* "osmdatapy/protobuf.pyx":66
  *         offset, size = packed_signedint32(block, offset, length, delta, resview)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
  *         offset, size = packed_signedint64(block, offset, length, delta, resview)
  *     else:
  */
-  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 65, __pyx_L1_error)
+  __pyx_t_6 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_6 < 0)) __PYX_ERR(0, 66, __pyx_L1_error)
   __pyx_t_4 = (__pyx_t_6 != 0);
   if (__pyx_t_4) {
 
-    /* "osmdatapy/protobuf.pyx":66
+    /* "osmdatapy/protobuf.pyx":67
  * 
  *     elif scalar_type == "sint64":
  *         offset, size = packed_signedint64(block, offset, length, delta, resview)             # <<<<<<<<<<<<<<
@@ -3359,7 +3359,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     __pyx_v_offset = __pyx_t_8;
     __pyx_v_size = __pyx_t_9;
 
-    /* "osmdatapy/protobuf.pyx":65
+    /* "osmdatapy/protobuf.pyx":66
  *         offset, size = packed_signedint32(block, offset, length, delta, resview)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
@@ -3369,7 +3369,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":68
+  /* "osmdatapy/protobuf.pyx":69
  *         offset, size = packed_signedint64(block, offset, length, delta, resview)
  *     else:
  *         size =0             # <<<<<<<<<<<<<<
@@ -3381,7 +3381,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
   }
   __pyx_L3:;
 
-  /* "osmdatapy/protobuf.pyx":70
+  /* "osmdatapy/protobuf.pyx":71
  *         size =0
  * 
  *     return res[:size], offset             # <<<<<<<<<<<<<<
@@ -3389,11 +3389,11 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_res), 0, __pyx_v_size, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_res), 0, __pyx_v_size, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_2 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 70, __pyx_L1_error)
+  __pyx_t_10 = PyTuple_New(2); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 71, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_10);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_10, 0, __pyx_t_1);
@@ -3405,7 +3405,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
   __pyx_t_10 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":41
+  /* "osmdatapy/protobuf.pyx":42
  * 
  * 
  * def large_packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
@@ -3431,7 +3431,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_2large_packed(CYTHON_UNUSED PyObj
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":73
+/* "osmdatapy/protobuf.pyx":74
  * 
  * 
  * def keyvals(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
@@ -3478,17 +3478,17 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_5keyvals(PyObject *__pyx_self, Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, 1); __PYX_ERR(0, 73, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, 1); __PYX_ERR(0, 74, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, 2); __PYX_ERR(0, 73, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, 2); __PYX_ERR(0, 74, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "keyvals") < 0)) __PYX_ERR(0, 73, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "keyvals") < 0)) __PYX_ERR(0, 74, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3497,20 +3497,20 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_5keyvals(PyObject *__pyx_self, Py
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 73, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L3_error)
-    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 73, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 74, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L3_error)
+    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 74, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 73, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("keyvals", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 74, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.keyvals", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 73, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 74, __pyx_L1_error)
   }
   __pyx_r = __pyx_pf_9osmdatapy_8protobuf_4keyvals(__pyx_self, __pyx_v_block, __pyx_v_offset, __pyx_v_length);
 
@@ -3549,16 +3549,16 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("keyvals", 0);
 
-  /* "osmdatapy/protobuf.pyx":78
+  /* "osmdatapy/protobuf.pyx":79
  *     """
  * 
  *     cdef array.array id_template = array.array('q',[])             # <<<<<<<<<<<<<<
  *     cdef array.array ids, keys, vals
  *     cdef bint key = True
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_2 = PyTuple_New(2); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __Pyx_INCREF(__pyx_n_u_q);
   __Pyx_GIVEREF(__pyx_n_u_q);
@@ -3566,13 +3566,13 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_2, 1, __pyx_t_1);
   __pyx_t_1 = 0;
-  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 78, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_Call(((PyObject *)__pyx_ptype_7cpython_5array_array), __pyx_t_2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 79, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
   __pyx_v_id_template = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":80
+  /* "osmdatapy/protobuf.pyx":81
  *     cdef array.array id_template = array.array('q',[])
  *     cdef array.array ids, keys, vals
  *     cdef bint key = True             # <<<<<<<<<<<<<<
@@ -3581,7 +3581,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
   __pyx_v_key = 1;
 
-  /* "osmdatapy/protobuf.pyx":81
+  /* "osmdatapy/protobuf.pyx":82
  *     cdef array.array ids, keys, vals
  *     cdef bint key = True
  *     cdef Py_ssize_t cnter = 0             # <<<<<<<<<<<<<<
@@ -3590,7 +3590,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
   __pyx_v_cnter = 0;
 
-  /* "osmdatapy/protobuf.pyx":82
+  /* "osmdatapy/protobuf.pyx":83
  *     cdef bint key = True
  *     cdef Py_ssize_t cnter = 0
  *     cdef Py_ssize_t idpos = 0             # <<<<<<<<<<<<<<
@@ -3599,43 +3599,43 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
   __pyx_v_idpos = 0;
 
-  /* "osmdatapy/protobuf.pyx":85
+  /* "osmdatapy/protobuf.pyx":86
  *     cdef int value
  * 
  *     ids = array.clone(id_template, length, zero=True)             # <<<<<<<<<<<<<<
  *     keys = array.clone(id_template, length, zero=True)
  *     vals = array.clone(id_template, length, zero=True)
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 85, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_ids = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":86
+  /* "osmdatapy/protobuf.pyx":87
  * 
  *     ids = array.clone(id_template, length, zero=True)
  *     keys = array.clone(id_template, length, zero=True)             # <<<<<<<<<<<<<<
  *     vals = array.clone(id_template, length, zero=True)
  * 
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 86, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_keys = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":87
+  /* "osmdatapy/protobuf.pyx":88
  *     ids = array.clone(id_template, length, zero=True)
  *     keys = array.clone(id_template, length, zero=True)
  *     vals = array.clone(id_template, length, zero=True)             # <<<<<<<<<<<<<<
  * 
  *     rep_offset = offset + length
  */
-  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 87, __pyx_L1_error)
+  __pyx_t_1 = ((PyObject *)__pyx_f_7cpython_5array_clone(__pyx_v_id_template, __pyx_v_length, 1)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 88, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_vals = ((arrayobject *)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":89
+  /* "osmdatapy/protobuf.pyx":90
  *     vals = array.clone(id_template, length, zero=True)
  * 
  *     rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -3644,7 +3644,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":91
+  /* "osmdatapy/protobuf.pyx":92
  *     rep_offset = offset + length
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -3655,7 +3655,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
     __pyx_t_3 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_3) break;
 
-    /* "osmdatapy/protobuf.pyx":92
+    /* "osmdatapy/protobuf.pyx":93
  * 
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)             # <<<<<<<<<<<<<<
@@ -3668,7 +3668,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
     __pyx_v_value = __pyx_t_5;
     __pyx_v_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":93
+    /* "osmdatapy/protobuf.pyx":94
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)
  *         if value==0:             # <<<<<<<<<<<<<<
@@ -3678,7 +3678,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
     __pyx_t_3 = ((__pyx_v_value == 0) != 0);
     if (__pyx_t_3) {
 
-      /* "osmdatapy/protobuf.pyx":94
+      /* "osmdatapy/protobuf.pyx":95
  *         value, offset = _varint32(block, offset)
  *         if value==0:
  *             idpos += 1             # <<<<<<<<<<<<<<
@@ -3687,7 +3687,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
       __pyx_v_idpos = (__pyx_v_idpos + 1);
 
-      /* "osmdatapy/protobuf.pyx":95
+      /* "osmdatapy/protobuf.pyx":96
  *         if value==0:
  *             idpos += 1
  *             key=True             # <<<<<<<<<<<<<<
@@ -3696,7 +3696,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
       __pyx_v_key = 1;
 
-      /* "osmdatapy/protobuf.pyx":93
+      /* "osmdatapy/protobuf.pyx":94
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)
  *         if value==0:             # <<<<<<<<<<<<<<
@@ -3706,7 +3706,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
       goto __pyx_L5;
     }
 
-    /* "osmdatapy/protobuf.pyx":96
+    /* "osmdatapy/protobuf.pyx":97
  *             idpos += 1
  *             key=True
  *         elif key:             # <<<<<<<<<<<<<<
@@ -3716,31 +3716,31 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
     __pyx_t_3 = (__pyx_v_key != 0);
     if (__pyx_t_3) {
 
-      /* "osmdatapy/protobuf.pyx":97
+      /* "osmdatapy/protobuf.pyx":98
  *             key=True
  *         elif key:
  *             keys[cnter] = value             # <<<<<<<<<<<<<<
  *             ids[cnter] = idpos
  *             cnter+=1
  */
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 97, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_keys), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 97, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_keys), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "osmdatapy/protobuf.pyx":98
+      /* "osmdatapy/protobuf.pyx":99
  *         elif key:
  *             keys[cnter] = value
  *             ids[cnter] = idpos             # <<<<<<<<<<<<<<
  *             cnter+=1
  *             key = False
  */
-      __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_idpos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 98, __pyx_L1_error)
+      __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_idpos); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_ids), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 98, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_ids), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 99, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "osmdatapy/protobuf.pyx":99
+      /* "osmdatapy/protobuf.pyx":100
  *             keys[cnter] = value
  *             ids[cnter] = idpos
  *             cnter+=1             # <<<<<<<<<<<<<<
@@ -3749,7 +3749,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
       __pyx_v_cnter = (__pyx_v_cnter + 1);
 
-      /* "osmdatapy/protobuf.pyx":100
+      /* "osmdatapy/protobuf.pyx":101
  *             ids[cnter] = idpos
  *             cnter+=1
  *             key = False             # <<<<<<<<<<<<<<
@@ -3758,7 +3758,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  */
       __pyx_v_key = 0;
 
-      /* "osmdatapy/protobuf.pyx":96
+      /* "osmdatapy/protobuf.pyx":97
  *             idpos += 1
  *             key=True
  *         elif key:             # <<<<<<<<<<<<<<
@@ -3768,7 +3768,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
       goto __pyx_L5;
     }
 
-    /* "osmdatapy/protobuf.pyx":102
+    /* "osmdatapy/protobuf.pyx":103
  *             key = False
  *         else:
  *             vals[cnter] = value             # <<<<<<<<<<<<<<
@@ -3776,12 +3776,12 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  * 
  */
     /*else*/ {
-      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 102, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
-      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_vals), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 102, __pyx_L1_error)
+      if (unlikely(__Pyx_SetItemInt(((PyObject *)__pyx_v_vals), __pyx_v_cnter, __pyx_t_1, Py_ssize_t, 1, PyInt_FromSsize_t, 0, 1, 1) < 0)) __PYX_ERR(0, 103, __pyx_L1_error)
       __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-      /* "osmdatapy/protobuf.pyx":103
+      /* "osmdatapy/protobuf.pyx":104
  *         else:
  *             vals[cnter] = value
  *             key=True             # <<<<<<<<<<<<<<
@@ -3793,7 +3793,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
     __pyx_L5:;
   }
 
-  /* "osmdatapy/protobuf.pyx":105
+  /* "osmdatapy/protobuf.pyx":106
  *             key=True
  * 
  *     return ids[:cnter], keys[:cnter], vals[:cnter], offset             # <<<<<<<<<<<<<<
@@ -3801,15 +3801,15 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_ids), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_ids), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_keys), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_keys), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  __pyx_t_7 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_vals), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyObject_GetSlice(((PyObject *)__pyx_v_vals), 0, __pyx_v_cnter, NULL, NULL, NULL, 0, 1, 1); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyTuple_New(4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 105, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(4); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 106, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_1);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_1);
@@ -3827,7 +3827,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":73
+  /* "osmdatapy/protobuf.pyx":74
  * 
  * 
  * def keyvals(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
@@ -3855,7 +3855,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_4keyvals(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":108
+/* "osmdatapy/protobuf.pyx":109
  * 
  * 
  * def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
@@ -3902,17 +3902,17 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_7bytelist(PyObject *__pyx_self, P
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, 1); __PYX_ERR(0, 108, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, 1); __PYX_ERR(0, 109, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_length)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, 2); __PYX_ERR(0, 108, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, 2); __PYX_ERR(0, 109, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "bytelist") < 0)) __PYX_ERR(0, 108, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "bytelist") < 0)) __PYX_ERR(0, 109, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -3921,20 +3921,20 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_7bytelist(PyObject *__pyx_self, P
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 108, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L3_error)
-    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 108, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 109, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L3_error)
+    __pyx_v_length = __Pyx_PyIndex_AsSsize_t(values[2]); if (unlikely((__pyx_v_length == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 109, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 108, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("bytelist", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 109, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.bytelist", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 108, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 109, __pyx_L1_error)
   }
   __pyx_r = __pyx_pf_9osmdatapy_8protobuf_6bytelist(__pyx_self, __pyx_v_block, __pyx_v_offset, __pyx_v_length);
 
@@ -3968,19 +3968,19 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_6bytelist(CYTHON_UNUSED PyObject 
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("bytelist", 0);
 
-  /* "osmdatapy/protobuf.pyx":110
+  /* "osmdatapy/protobuf.pyx":111
  * def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):
  *     """ Returns a byte list"""
  *     cdef list res = []             # <<<<<<<<<<<<<<
  *     cdef int key
  *     cdef Py_ssize_t bytesize
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 110, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 111, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":113
+  /* "osmdatapy/protobuf.pyx":114
  *     cdef int key
  *     cdef Py_ssize_t bytesize
  *     cdef Py_ssize_t list_offset = offset + length             # <<<<<<<<<<<<<<
@@ -3989,25 +3989,25 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_6bytelist(CYTHON_UNUSED PyObject 
  */
   __pyx_v_list_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":115
+  /* "osmdatapy/protobuf.pyx":116
  *     cdef Py_ssize_t list_offset = offset + length
  * 
  *     while offset < list_offset:             # <<<<<<<<<<<<<<
- *         key, offset, bytesize = _get_key(block, offset)
+ *         key, offset, bytesize = _pbf_key(block, offset)
  *         res.append(block[offset:offset+bytesize])
  */
   while (1) {
     __pyx_t_2 = ((__pyx_v_offset < __pyx_v_list_offset) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":116
+    /* "osmdatapy/protobuf.pyx":117
  * 
  *     while offset < list_offset:
- *         key, offset, bytesize = _get_key(block, offset)             # <<<<<<<<<<<<<<
+ *         key, offset, bytesize = _pbf_key(block, offset)             # <<<<<<<<<<<<<<
  *         res.append(block[offset:offset+bytesize])
  *         offset = offset + bytesize
  */
-    __pyx_t_3 = __pyx_f_9osmdatapy_8protobuf__get_key(__pyx_v_block, __pyx_v_offset);
+    __pyx_t_3 = __pyx_f_9osmdatapy_8protobuf__pbf_key(__pyx_v_block, __pyx_v_offset);
     __pyx_t_4 = __pyx_t_3.f0;
     __pyx_t_5 = __pyx_t_3.f1;
     __pyx_t_6 = __pyx_t_3.f2;
@@ -4015,9 +4015,9 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_6bytelist(CYTHON_UNUSED PyObject 
     __pyx_v_offset = __pyx_t_5;
     __pyx_v_bytesize = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":117
+    /* "osmdatapy/protobuf.pyx":118
  *     while offset < list_offset:
- *         key, offset, bytesize = _get_key(block, offset)
+ *         key, offset, bytesize = _pbf_key(block, offset)
  *         res.append(block[offset:offset+bytesize])             # <<<<<<<<<<<<<<
  *         offset = offset + bytesize
  * 
@@ -4040,19 +4040,19 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_6bytelist(CYTHON_UNUSED PyObject 
     0,
     1) < 0))
 {
-    __PYX_ERR(0, 117, __pyx_L1_error)
+    __PYX_ERR(0, 118, __pyx_L1_error)
 }
 
-__pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 117, __pyx_L1_error)
+__pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __pyx_memview_get_unsigned_char__const__, (int (*)(char *, PyObject *)) NULL, 0);; if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __PYX_XDEC_MEMVIEW(&__pyx_t_7, 1);
     __pyx_t_7.memview = NULL;
     __pyx_t_7.data = NULL;
-    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 117, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_8 == ((int)-1))) __PYX_ERR(0, 118, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-    /* "osmdatapy/protobuf.pyx":118
- *         key, offset, bytesize = _get_key(block, offset)
+    /* "osmdatapy/protobuf.pyx":119
+ *         key, offset, bytesize = _pbf_key(block, offset)
  *         res.append(block[offset:offset+bytesize])
  *         offset = offset + bytesize             # <<<<<<<<<<<<<<
  * 
@@ -4061,17 +4061,17 @@ __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
     __pyx_v_offset = (__pyx_v_offset + __pyx_v_bytesize);
   }
 
-  /* "osmdatapy/protobuf.pyx":120
+  /* "osmdatapy/protobuf.pyx":121
  *         offset = offset + bytesize
  * 
  *     return res, offset             # <<<<<<<<<<<<<<
  * 
- * def get_key(const unsigned char[:] block not None, Py_ssize_t offset):
+ * def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_1 = PyInt_FromSsize_t(__pyx_v_offset); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 120, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 121, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_INCREF(__pyx_v_res);
   __Pyx_GIVEREF(__pyx_v_res);
@@ -4083,7 +4083,7 @@ __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":108
+  /* "osmdatapy/protobuf.pyx":109
  * 
  * 
  * def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
@@ -4106,19 +4106,19 @@ __pyx_t_1 = __pyx_memoryview_fromslice(__pyx_t_7, 1, (PyObject *(*)(char *)) __p
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":122
+/* "osmdatapy/protobuf.pyx":123
  *     return res, offset
  * 
- * def get_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  *     """
  *     returns key, updated offset and the length of the value
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static char __pyx_doc_9osmdatapy_8protobuf_8get_key[] = "\n    returns key, updated offset and the length of the value\n        - for varints, length is 0\n        - for length delimited values, parse length and shift offset to the start of values\n    ";
-static PyMethodDef __pyx_mdef_9osmdatapy_8protobuf_9get_key = {"get_key", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9osmdatapy_8protobuf_9get_key, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9osmdatapy_8protobuf_8get_key};
-static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+static PyObject *__pyx_pw_9osmdatapy_8protobuf_9pbf_key(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static char __pyx_doc_9osmdatapy_8protobuf_8pbf_key[] = "\n    returns key, updated offset and the length of the value\n        - for varints, length is 0\n        - for length delimited values, parse length and shift offset to the start of values\n    ";
+static PyMethodDef __pyx_mdef_9osmdatapy_8protobuf_9pbf_key = {"pbf_key", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_9osmdatapy_8protobuf_9pbf_key, METH_VARARGS|METH_KEYWORDS, __pyx_doc_9osmdatapy_8protobuf_8pbf_key};
+static PyObject *__pyx_pw_9osmdatapy_8protobuf_9pbf_key(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
   __Pyx_memviewslice __pyx_v_block = { 0, 0, { 0 }, { 0 }, { 0 } };
   Py_ssize_t __pyx_v_offset;
   int __pyx_lineno = 0;
@@ -4126,7 +4126,7 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, Py
   int __pyx_clineno = 0;
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("get_key (wrapper)", 0);
+  __Pyx_RefNannySetupContext("pbf_key (wrapper)", 0);
   {
     static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_block,&__pyx_n_s_offset,0};
     PyObject* values[2] = {0,0};
@@ -4150,11 +4150,11 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("get_key", 1, 2, 2, 1); __PYX_ERR(0, 122, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pbf_key", 1, 2, 2, 1); __PYX_ERR(0, 123, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "get_key") < 0)) __PYX_ERR(0, 122, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pbf_key") < 0)) __PYX_ERR(0, 123, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4162,21 +4162,21 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, Py
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 122, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 122, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 123, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 123, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("get_key", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 122, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pbf_key", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 123, __pyx_L3_error)
   __pyx_L3_error:;
-  __Pyx_AddTraceback("osmdatapy.protobuf.get_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("osmdatapy.protobuf.pbf_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 122, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 123, __pyx_L1_error)
   }
-  __pyx_r = __pyx_pf_9osmdatapy_8protobuf_8get_key(__pyx_self, __pyx_v_block, __pyx_v_offset);
+  __pyx_r = __pyx_pf_9osmdatapy_8protobuf_8pbf_key(__pyx_self, __pyx_v_block, __pyx_v_offset);
 
   /* function exit code */
   goto __pyx_L0;
@@ -4187,33 +4187,33 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_9get_key(PyObject *__pyx_self, Py
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9osmdatapy_8protobuf_8get_key(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset) {
+static PyObject *__pyx_pf_9osmdatapy_8protobuf_8pbf_key(CYTHON_UNUSED PyObject *__pyx_self, __Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __Pyx_RefNannySetupContext("get_key", 0);
+  __Pyx_RefNannySetupContext("pbf_key", 0);
 
-  /* "osmdatapy/protobuf.pyx":128
+  /* "osmdatapy/protobuf.pyx":129
  *         - for length delimited values, parse length and shift offset to the start of values
  *     """
- *     return  _get_key(block, offset)             # <<<<<<<<<<<<<<
+ *     return  _pbf_key(block, offset)             # <<<<<<<<<<<<<<
  * 
  * 
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_int__and_int__and_int64_t(__pyx_f_9osmdatapy_8protobuf__get_key(__pyx_v_block, __pyx_v_offset)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 128, __pyx_L1_error)
+  __pyx_t_1 = __pyx_convert__to_py___pyx_ctuple_int__and_int__and_int64_t(__pyx_f_9osmdatapy_8protobuf__pbf_key(__pyx_v_block, __pyx_v_offset)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 129, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":122
+  /* "osmdatapy/protobuf.pyx":123
  *     return res, offset
  * 
- * def get_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  *     """
  *     returns key, updated offset and the length of the value
  */
@@ -4221,7 +4221,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_8get_key(CYTHON_UNUSED PyObject *
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("osmdatapy.protobuf.get_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("osmdatapy.protobuf.pbf_key", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __PYX_XDEC_MEMVIEW(&__pyx_v_block, 1);
@@ -4230,7 +4230,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_8get_key(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":131
+/* "osmdatapy/protobuf.pyx":132
  * 
  * 
  * def scalar(const unsigned char[:] block not None, Py_ssize_t offset, str scalar_type):             # <<<<<<<<<<<<<<
@@ -4277,17 +4277,17 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_11scalar(PyObject *__pyx_self, Py
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_offset)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, 1); __PYX_ERR(0, 131, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, 1); __PYX_ERR(0, 132, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_scalar_type)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, 2); __PYX_ERR(0, 131, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, 2); __PYX_ERR(0, 132, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scalar") < 0)) __PYX_ERR(0, 131, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "scalar") < 0)) __PYX_ERR(0, 132, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 3) {
       goto __pyx_L5_argtuple_error;
@@ -4296,22 +4296,22 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_11scalar(PyObject *__pyx_self, Py
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
       values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
     }
-    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 131, __pyx_L3_error)
-    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 131, __pyx_L3_error)
+    __pyx_v_block = __Pyx_PyObject_to_MemoryviewSlice_ds_unsigned_char__const__(values[0], 0); if (unlikely(!__pyx_v_block.memview)) __PYX_ERR(0, 132, __pyx_L3_error)
+    __pyx_v_offset = __Pyx_PyIndex_AsSsize_t(values[1]); if (unlikely((__pyx_v_offset == (Py_ssize_t)-1) && PyErr_Occurred())) __PYX_ERR(0, 132, __pyx_L3_error)
     __pyx_v_scalar_type = ((PyObject*)values[2]);
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 131, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("scalar", 1, 3, 3, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 132, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.scalar", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
   if (unlikely(((PyObject *)__pyx_v_block.memview) == Py_None)) {
-    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 131, __pyx_L1_error)
+    PyErr_Format(PyExc_TypeError, "Argument '%.200s' must not be None", "block"); __PYX_ERR(0, 132, __pyx_L1_error)
   }
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_scalar_type), (&PyUnicode_Type), 1, "scalar_type", 1))) __PYX_ERR(0, 132, __pyx_L1_error)
   __pyx_r = __pyx_pf_9osmdatapy_8protobuf_10scalar(__pyx_self, __pyx_v_block, __pyx_v_offset, __pyx_v_scalar_type);
 
   /* function exit code */
@@ -4342,34 +4342,34 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("scalar", 0);
 
-  /* "osmdatapy/protobuf.pyx":137
+  /* "osmdatapy/protobuf.pyx":138
  *     cdef int key, val
  * 
  *     if scalar_type == 'bool' or scalar_type == "int32" or scalar_type == "enum":             # <<<<<<<<<<<<<<
  *         val, new_offset = _varint32(block, offset)
  * 
  */
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_bool, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_2 != 0);
   if (!__pyx_t_3) {
   } else {
     __pyx_t_1 = __pyx_t_3;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int32, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_t_2 = (__pyx_t_3 != 0);
   if (!__pyx_t_2) {
   } else {
     __pyx_t_1 = __pyx_t_2;
     goto __pyx_L4_bool_binop_done;
   }
-  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 137, __pyx_L1_error)
+  __pyx_t_2 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_enum, Py_EQ)); if (unlikely(__pyx_t_2 < 0)) __PYX_ERR(0, 138, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_2 != 0);
   __pyx_t_1 = __pyx_t_3;
   __pyx_L4_bool_binop_done:;
   if (__pyx_t_1) {
 
-    /* "osmdatapy/protobuf.pyx":138
+    /* "osmdatapy/protobuf.pyx":139
  * 
  *     if scalar_type == 'bool' or scalar_type == "int32" or scalar_type == "enum":
  *         val, new_offset = _varint32(block, offset)             # <<<<<<<<<<<<<<
@@ -4382,7 +4382,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     __pyx_v_val = __pyx_t_5;
     __pyx_v_new_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":137
+    /* "osmdatapy/protobuf.pyx":138
  *     cdef int key, val
  * 
  *     if scalar_type == 'bool' or scalar_type == "int32" or scalar_type == "enum":             # <<<<<<<<<<<<<<
@@ -4392,18 +4392,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":140
+  /* "osmdatapy/protobuf.pyx":141
  *         val, new_offset = _varint32(block, offset)
  * 
  *     elif scalar_type =="uint32":             # <<<<<<<<<<<<<<
  *         val, new_offset = _varuint32(block, offset)
  * 
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 140, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_uint32, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 141, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "osmdatapy/protobuf.pyx":141
+    /* "osmdatapy/protobuf.pyx":142
  * 
  *     elif scalar_type =="uint32":
  *         val, new_offset = _varuint32(block, offset)             # <<<<<<<<<<<<<<
@@ -4416,7 +4416,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     __pyx_v_val = __pyx_t_5;
     __pyx_v_new_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":140
+    /* "osmdatapy/protobuf.pyx":141
  *         val, new_offset = _varint32(block, offset)
  * 
  *     elif scalar_type =="uint32":             # <<<<<<<<<<<<<<
@@ -4426,18 +4426,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":143
+  /* "osmdatapy/protobuf.pyx":144
  *         val, new_offset = _varuint32(block, offset)
  * 
  *     elif scalar_type== "int64":             # <<<<<<<<<<<<<<
  *         val, new_offset = _varint64(block, offset)
  * 
  */
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 143, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_int64, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 144, __pyx_L1_error)
   __pyx_t_1 = (__pyx_t_3 != 0);
   if (__pyx_t_1) {
 
-    /* "osmdatapy/protobuf.pyx":144
+    /* "osmdatapy/protobuf.pyx":145
  * 
  *     elif scalar_type== "int64":
  *         val, new_offset = _varint64(block, offset)             # <<<<<<<<<<<<<<
@@ -4450,7 +4450,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     __pyx_v_val = __pyx_t_5;
     __pyx_v_new_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":143
+    /* "osmdatapy/protobuf.pyx":144
  *         val, new_offset = _varuint32(block, offset)
  * 
  *     elif scalar_type== "int64":             # <<<<<<<<<<<<<<
@@ -4460,18 +4460,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":146
+  /* "osmdatapy/protobuf.pyx":147
  *         val, new_offset = _varint64(block, offset)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
  *         val, new_offset = _signedvarint32(block, offset)
  * 
  */
-  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 146, __pyx_L1_error)
+  __pyx_t_1 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint32, Py_EQ)); if (unlikely(__pyx_t_1 < 0)) __PYX_ERR(0, 147, __pyx_L1_error)
   __pyx_t_3 = (__pyx_t_1 != 0);
   if (__pyx_t_3) {
 
-    /* "osmdatapy/protobuf.pyx":147
+    /* "osmdatapy/protobuf.pyx":148
  * 
  *     elif scalar_type == "sint32":
  *         val, new_offset = _signedvarint32(block, offset)             # <<<<<<<<<<<<<<
@@ -4484,7 +4484,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     __pyx_v_val = __pyx_t_5;
     __pyx_v_new_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":146
+    /* "osmdatapy/protobuf.pyx":147
  *         val, new_offset = _varint64(block, offset)
  * 
  *     elif scalar_type == "sint32":             # <<<<<<<<<<<<<<
@@ -4494,18 +4494,18 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":149
+  /* "osmdatapy/protobuf.pyx":150
  *         val, new_offset = _signedvarint32(block, offset)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
  *         val, new_offset = _signedvarint64(block, offset)
  * 
  */
-  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 149, __pyx_L1_error)
+  __pyx_t_3 = (__Pyx_PyUnicode_Equals(__pyx_v_scalar_type, __pyx_n_u_sint64, Py_EQ)); if (unlikely(__pyx_t_3 < 0)) __PYX_ERR(0, 150, __pyx_L1_error)
   __pyx_t_1 = (__pyx_t_3 != 0);
   if (__pyx_t_1) {
 
-    /* "osmdatapy/protobuf.pyx":150
+    /* "osmdatapy/protobuf.pyx":151
  * 
  *     elif scalar_type == "sint64":
  *         val, new_offset = _signedvarint64(block, offset)             # <<<<<<<<<<<<<<
@@ -4518,7 +4518,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     __pyx_v_val = __pyx_t_5;
     __pyx_v_new_offset = __pyx_t_6;
 
-    /* "osmdatapy/protobuf.pyx":149
+    /* "osmdatapy/protobuf.pyx":150
  *         val, new_offset = _signedvarint32(block, offset)
  * 
  *     elif scalar_type == "sint64":             # <<<<<<<<<<<<<<
@@ -4528,7 +4528,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
     goto __pyx_L3;
   }
 
-  /* "osmdatapy/protobuf.pyx":153
+  /* "osmdatapy/protobuf.pyx":154
  * 
  *     else:
  *         val = 0             # <<<<<<<<<<<<<<
@@ -4540,7 +4540,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
   }
   __pyx_L3:;
 
-  /* "osmdatapy/protobuf.pyx":155
+  /* "osmdatapy/protobuf.pyx":156
  *         val = 0
  * 
  *     return val, new_offset             # <<<<<<<<<<<<<<
@@ -4548,11 +4548,11 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_val); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_val); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_7);
-  __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_new_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_8 = PyInt_FromSsize_t(__pyx_v_new_offset); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_8);
-  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 155, __pyx_L1_error)
+  __pyx_t_9 = PyTuple_New(2); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 156, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_9);
   __Pyx_GIVEREF(__pyx_t_7);
   PyTuple_SET_ITEM(__pyx_t_9, 0, __pyx_t_7);
@@ -4564,7 +4564,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
   __pyx_t_9 = 0;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":131
+  /* "osmdatapy/protobuf.pyx":132
  * 
  * 
  * def scalar(const unsigned char[:] block not None, Py_ssize_t offset, str scalar_type):             # <<<<<<<<<<<<<<
@@ -4586,7 +4586,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_10scalar(CYTHON_UNUSED PyObject *
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":157
+/* "osmdatapy/protobuf.pyx":158
  *     return val, new_offset
  * 
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):             # <<<<<<<<<<<<<<
@@ -4629,11 +4629,11 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_13pack_tag_val(PyObject *__pyx_se
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_vals)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("pack_tag_val", 1, 2, 2, 1); __PYX_ERR(0, 157, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("pack_tag_val", 1, 2, 2, 1); __PYX_ERR(0, 158, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pack_tag_val") < 0)) __PYX_ERR(0, 157, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "pack_tag_val") < 0)) __PYX_ERR(0, 158, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 2) {
       goto __pyx_L5_argtuple_error;
@@ -4641,12 +4641,12 @@ static PyObject *__pyx_pw_9osmdatapy_8protobuf_13pack_tag_val(PyObject *__pyx_se
       values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
       values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
     }
-    __pyx_v_tags = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tags.memview)) __PYX_ERR(0, 157, __pyx_L3_error)
-    __pyx_v_vals = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_vals.memview)) __PYX_ERR(0, 157, __pyx_L3_error)
+    __pyx_v_tags = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_tags.memview)) __PYX_ERR(0, 158, __pyx_L3_error)
+    __pyx_v_vals = __Pyx_PyObject_to_MemoryviewSlice_ds_nn_int64_t(values[1], PyBUF_WRITABLE); if (unlikely(!__pyx_v_vals.memview)) __PYX_ERR(0, 158, __pyx_L3_error)
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("pack_tag_val", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 157, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("pack_tag_val", 1, 2, 2, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 158, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("osmdatapy.protobuf.pack_tag_val", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
@@ -4679,19 +4679,19 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("pack_tag_val", 0);
 
-  /* "osmdatapy/protobuf.pyx":159
+  /* "osmdatapy/protobuf.pyx":160
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):
  * 
  *     cdef list res = []             # <<<<<<<<<<<<<<
  *     cdef size_t l = len(tags)
  * 
  */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 159, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 160, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_res = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":160
+  /* "osmdatapy/protobuf.pyx":161
  * 
  *     cdef list res = []
  *     cdef size_t l = len(tags)             # <<<<<<<<<<<<<<
@@ -4701,7 +4701,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   __pyx_t_2 = __Pyx_MemoryView_Len(__pyx_v_tags); 
   __pyx_v_l = __pyx_t_2;
 
-  /* "osmdatapy/protobuf.pyx":162
+  /* "osmdatapy/protobuf.pyx":163
  *     cdef size_t l = len(tags)
  * 
  *     if l != len(vals):             # <<<<<<<<<<<<<<
@@ -4712,20 +4712,20 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   __pyx_t_3 = ((__pyx_v_l != __pyx_t_2) != 0);
   if (unlikely(__pyx_t_3)) {
 
-    /* "osmdatapy/protobuf.pyx":163
+    /* "osmdatapy/protobuf.pyx":164
  * 
  *     if l != len(vals):
  *         raise ValueError("tags and vals must hase same length")             # <<<<<<<<<<<<<<
  * 
  *     for i in range(l):
  */
-    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 163, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_ValueError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 164, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_Raise(__pyx_t_1, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __PYX_ERR(0, 163, __pyx_L1_error)
+    __PYX_ERR(0, 164, __pyx_L1_error)
 
-    /* "osmdatapy/protobuf.pyx":162
+    /* "osmdatapy/protobuf.pyx":163
  *     cdef size_t l = len(tags)
  * 
  *     if l != len(vals):             # <<<<<<<<<<<<<<
@@ -4734,7 +4734,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
  */
   }
 
-  /* "osmdatapy/protobuf.pyx":165
+  /* "osmdatapy/protobuf.pyx":166
  *         raise ValueError("tags and vals must hase same length")
  * 
  *     for i in range(l):             # <<<<<<<<<<<<<<
@@ -4746,7 +4746,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "osmdatapy/protobuf.pyx":166
+    /* "osmdatapy/protobuf.pyx":167
  * 
  *     for i in range(l):
  *         res.append(tags[i] << 32 | vals[i])             # <<<<<<<<<<<<<<
@@ -4758,22 +4758,22 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
     if (unlikely(__pyx_t_6 >= (size_t)__pyx_v_tags.shape[0])) __pyx_t_7 = 0;
     if (unlikely(__pyx_t_7 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_7);
-      __PYX_ERR(0, 166, __pyx_L1_error)
+      __PYX_ERR(0, 167, __pyx_L1_error)
     }
     __pyx_t_8 = __pyx_v_i;
     __pyx_t_7 = -1;
     if (unlikely(__pyx_t_8 >= (size_t)__pyx_v_vals.shape[0])) __pyx_t_7 = 0;
     if (unlikely(__pyx_t_7 != -1)) {
       __Pyx_RaiseBufferIndexError(__pyx_t_7);
-      __PYX_ERR(0, 166, __pyx_L1_error)
+      __PYX_ERR(0, 167, __pyx_L1_error)
     }
-    __pyx_t_1 = __Pyx_PyInt_From_int64_t((((*((int64_t *) ( /* dim=0 */ (__pyx_v_tags.data + __pyx_t_6 * __pyx_v_tags.strides[0]) ))) << 32) | (*((int64_t *) ( /* dim=0 */ (__pyx_v_vals.data + __pyx_t_8 * __pyx_v_vals.strides[0]) ))))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_1 = __Pyx_PyInt_From_int64_t((((*((int64_t *) ( /* dim=0 */ (__pyx_v_tags.data + __pyx_t_6 * __pyx_v_tags.strides[0]) ))) << 32) | (*((int64_t *) ( /* dim=0 */ (__pyx_v_vals.data + __pyx_t_8 * __pyx_v_vals.strides[0]) ))))); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 166, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyList_Append(__pyx_v_res, __pyx_t_1); if (unlikely(__pyx_t_9 == ((int)-1))) __PYX_ERR(0, 167, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "osmdatapy/protobuf.pyx":168
+  /* "osmdatapy/protobuf.pyx":169
  *         res.append(tags[i] << 32 | vals[i])
  * 
  *     return res             # <<<<<<<<<<<<<<
@@ -4785,7 +4785,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   __pyx_r = __pyx_v_res;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":157
+  /* "osmdatapy/protobuf.pyx":158
  *     return val, new_offset
  * 
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):             # <<<<<<<<<<<<<<
@@ -4807,7 +4807,7 @@ static PyObject *__pyx_pf_9osmdatapy_8protobuf_12pack_tag_val(CYTHON_UNUSED PyOb
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":176
+/* "osmdatapy/protobuf.pyx":177
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_int32(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -4830,7 +4830,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
   __pyx_ctuple_int__and_int __pyx_t_6;
   __Pyx_RefNannySetupContext("packed_int32", 0);
 
-  /* "osmdatapy/protobuf.pyx":182
+  /* "osmdatapy/protobuf.pyx":183
  *     """
  * 
  *     cdef int rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -4839,7 +4839,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":183
+  /* "osmdatapy/protobuf.pyx":184
  * 
  *     cdef int rep_offset = offset + length
  *     cdef int size = 0             # <<<<<<<<<<<<<<
@@ -4848,7 +4848,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
   __pyx_v_size = 0;
 
-  /* "osmdatapy/protobuf.pyx":185
+  /* "osmdatapy/protobuf.pyx":186
  *     cdef int size = 0
  *     cdef int64_t delta_val, value
  *     delta_val= 0             # <<<<<<<<<<<<<<
@@ -4857,7 +4857,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
   __pyx_v_delta_val = 0;
 
-  /* "osmdatapy/protobuf.pyx":187
+  /* "osmdatapy/protobuf.pyx":188
  *     delta_val= 0
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -4868,7 +4868,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
     __pyx_t_1 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_1) break;
 
-    /* "osmdatapy/protobuf.pyx":188
+    /* "osmdatapy/protobuf.pyx":189
  * 
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)             # <<<<<<<<<<<<<<
@@ -4881,7 +4881,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
     __pyx_v_value = __pyx_t_3;
     __pyx_v_offset = __pyx_t_4;
 
-    /* "osmdatapy/protobuf.pyx":189
+    /* "osmdatapy/protobuf.pyx":190
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -4891,7 +4891,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
     __pyx_t_1 = (__pyx_v_delta != 0);
     if (__pyx_t_1) {
 
-      /* "osmdatapy/protobuf.pyx":190
+      /* "osmdatapy/protobuf.pyx":191
  *         value, offset = _varint32(block, offset)
  *         if delta:
  *             value = delta_val + value             # <<<<<<<<<<<<<<
@@ -4900,7 +4900,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
       __pyx_v_value = (__pyx_v_delta_val + __pyx_v_value);
 
-      /* "osmdatapy/protobuf.pyx":191
+      /* "osmdatapy/protobuf.pyx":192
  *         if delta:
  *             value = delta_val + value
  *             delta_val = value             # <<<<<<<<<<<<<<
@@ -4909,7 +4909,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
       __pyx_v_delta_val = __pyx_v_value;
 
-      /* "osmdatapy/protobuf.pyx":189
+      /* "osmdatapy/protobuf.pyx":190
  *     while offset < rep_offset:
  *         value, offset = _varint32(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -4918,7 +4918,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
  */
     }
 
-    /* "osmdatapy/protobuf.pyx":192
+    /* "osmdatapy/protobuf.pyx":193
  *             value = delta_val + value
  *             delta_val = value
  *         arr[size] = value             # <<<<<<<<<<<<<<
@@ -4928,7 +4928,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
     __pyx_t_5 = __pyx_v_size;
     *((int64_t *) ( /* dim=0 */ (__pyx_v_arr.data + __pyx_t_5 * __pyx_v_arr.strides[0]) )) = __pyx_v_value;
 
-    /* "osmdatapy/protobuf.pyx":193
+    /* "osmdatapy/protobuf.pyx":194
  *             delta_val = value
  *         arr[size] = value
  *         size+=1             # <<<<<<<<<<<<<<
@@ -4938,7 +4938,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
     __pyx_v_size = (__pyx_v_size + 1);
   }
 
-  /* "osmdatapy/protobuf.pyx":195
+  /* "osmdatapy/protobuf.pyx":196
  *         size+=1
  * 
  *     return offset, size             # <<<<<<<<<<<<<<
@@ -4950,7 +4950,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":176
+  /* "osmdatapy/protobuf.pyx":177
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_int32(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -4964,7 +4964,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int32(__Pyx
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":199
+/* "osmdatapy/protobuf.pyx":200
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_uint32(const unsigned char[:] block, int offset, int length, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -4986,7 +4986,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
   __pyx_ctuple_int__and_int __pyx_t_6;
   __Pyx_RefNannySetupContext("packed_uint32", 0);
 
-  /* "osmdatapy/protobuf.pyx":205
+  /* "osmdatapy/protobuf.pyx":206
  *     """
  * 
  *     cdef int rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -4995,7 +4995,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":206
+  /* "osmdatapy/protobuf.pyx":207
  * 
  *     cdef int rep_offset = offset + length
  *     cdef int size = 0             # <<<<<<<<<<<<<<
@@ -5004,7 +5004,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
  */
   __pyx_v_size = 0;
 
-  /* "osmdatapy/protobuf.pyx":209
+  /* "osmdatapy/protobuf.pyx":210
  *     cdef int64_t value
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -5015,7 +5015,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
     __pyx_t_1 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_1) break;
 
-    /* "osmdatapy/protobuf.pyx":210
+    /* "osmdatapy/protobuf.pyx":211
  * 
  *     while offset < rep_offset:
  *         value, offset = _varuint32(block, offset)             # <<<<<<<<<<<<<<
@@ -5028,7 +5028,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
     __pyx_v_value = __pyx_t_3;
     __pyx_v_offset = __pyx_t_4;
 
-    /* "osmdatapy/protobuf.pyx":211
+    /* "osmdatapy/protobuf.pyx":212
  *     while offset < rep_offset:
  *         value, offset = _varuint32(block, offset)
  *         arr[size] = value             # <<<<<<<<<<<<<<
@@ -5038,7 +5038,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
     __pyx_t_5 = __pyx_v_size;
     *((int64_t *) ( /* dim=0 */ (__pyx_v_arr.data + __pyx_t_5 * __pyx_v_arr.strides[0]) )) = __pyx_v_value;
 
-    /* "osmdatapy/protobuf.pyx":212
+    /* "osmdatapy/protobuf.pyx":213
  *         value, offset = _varuint32(block, offset)
  *         arr[size] = value
  *         size+=1             # <<<<<<<<<<<<<<
@@ -5048,7 +5048,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
     __pyx_v_size = (__pyx_v_size + 1);
   }
 
-  /* "osmdatapy/protobuf.pyx":214
+  /* "osmdatapy/protobuf.pyx":215
  *         size+=1
  * 
  *     return offset, size             # <<<<<<<<<<<<<<
@@ -5060,7 +5060,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":199
+  /* "osmdatapy/protobuf.pyx":200
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_uint32(const unsigned char[:] block, int offset, int length, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5074,7 +5074,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_uint32(__Py
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":218
+/* "osmdatapy/protobuf.pyx":219
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_int64(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5097,7 +5097,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
   __pyx_ctuple_int__and_int __pyx_t_6;
   __Pyx_RefNannySetupContext("packed_int64", 0);
 
-  /* "osmdatapy/protobuf.pyx":224
+  /* "osmdatapy/protobuf.pyx":225
  *     """
  * 
  *     cdef int rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -5106,7 +5106,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":225
+  /* "osmdatapy/protobuf.pyx":226
  * 
  *     cdef int rep_offset = offset + length
  *     cdef int size = 0             # <<<<<<<<<<<<<<
@@ -5115,7 +5115,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
   __pyx_v_size = 0;
 
-  /* "osmdatapy/protobuf.pyx":228
+  /* "osmdatapy/protobuf.pyx":229
  *     cdef int64_t delta_val, value
  * 
  *     delta_val = 0             # <<<<<<<<<<<<<<
@@ -5124,7 +5124,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
   __pyx_v_delta_val = 0;
 
-  /* "osmdatapy/protobuf.pyx":230
+  /* "osmdatapy/protobuf.pyx":231
  *     delta_val = 0
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -5135,7 +5135,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
     __pyx_t_1 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_1) break;
 
-    /* "osmdatapy/protobuf.pyx":231
+    /* "osmdatapy/protobuf.pyx":232
  * 
  *     while offset < rep_offset:
  *         value, offset = _varint64(block, offset)             # <<<<<<<<<<<<<<
@@ -5148,7 +5148,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
     __pyx_v_value = __pyx_t_3;
     __pyx_v_offset = __pyx_t_4;
 
-    /* "osmdatapy/protobuf.pyx":232
+    /* "osmdatapy/protobuf.pyx":233
  *     while offset < rep_offset:
  *         value, offset = _varint64(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5158,7 +5158,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
     __pyx_t_1 = (__pyx_v_delta != 0);
     if (__pyx_t_1) {
 
-      /* "osmdatapy/protobuf.pyx":233
+      /* "osmdatapy/protobuf.pyx":234
  *         value, offset = _varint64(block, offset)
  *         if delta:
  *             value = delta_val + value             # <<<<<<<<<<<<<<
@@ -5167,7 +5167,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
       __pyx_v_value = (__pyx_v_delta_val + __pyx_v_value);
 
-      /* "osmdatapy/protobuf.pyx":234
+      /* "osmdatapy/protobuf.pyx":235
  *         if delta:
  *             value = delta_val + value
  *             delta_val = value             # <<<<<<<<<<<<<<
@@ -5176,7 +5176,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
       __pyx_v_delta_val = __pyx_v_value;
 
-      /* "osmdatapy/protobuf.pyx":232
+      /* "osmdatapy/protobuf.pyx":233
  *     while offset < rep_offset:
  *         value, offset = _varint64(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5185,7 +5185,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
  */
     }
 
-    /* "osmdatapy/protobuf.pyx":235
+    /* "osmdatapy/protobuf.pyx":236
  *             value = delta_val + value
  *             delta_val = value
  *         arr[size] = value             # <<<<<<<<<<<<<<
@@ -5195,7 +5195,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
     __pyx_t_5 = __pyx_v_size;
     *((int64_t *) ( /* dim=0 */ (__pyx_v_arr.data + __pyx_t_5 * __pyx_v_arr.strides[0]) )) = __pyx_v_value;
 
-    /* "osmdatapy/protobuf.pyx":236
+    /* "osmdatapy/protobuf.pyx":237
  *             delta_val = value
  *         arr[size] = value
  *         size+=1             # <<<<<<<<<<<<<<
@@ -5205,7 +5205,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
     __pyx_v_size = (__pyx_v_size + 1);
   }
 
-  /* "osmdatapy/protobuf.pyx":238
+  /* "osmdatapy/protobuf.pyx":239
  *         size+=1
  * 
  *     return offset, size             # <<<<<<<<<<<<<<
@@ -5217,7 +5217,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":218
+  /* "osmdatapy/protobuf.pyx":219
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_int64(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5231,7 +5231,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_int64(__Pyx
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":242
+/* "osmdatapy/protobuf.pyx":243
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_signedint32(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5254,7 +5254,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
   __pyx_ctuple_int__and_int __pyx_t_6;
   __Pyx_RefNannySetupContext("packed_signedint32", 0);
 
-  /* "osmdatapy/protobuf.pyx":248
+  /* "osmdatapy/protobuf.pyx":249
  *     """
  * 
  *     cdef int rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -5263,7 +5263,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":249
+  /* "osmdatapy/protobuf.pyx":250
  * 
  *     cdef int rep_offset = offset + length
  *     cdef int size = 0             # <<<<<<<<<<<<<<
@@ -5272,7 +5272,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
   __pyx_v_size = 0;
 
-  /* "osmdatapy/protobuf.pyx":252
+  /* "osmdatapy/protobuf.pyx":253
  *     cdef int64_t delta_val, value
  * 
  *     delta_val = 0             # <<<<<<<<<<<<<<
@@ -5281,7 +5281,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
   __pyx_v_delta_val = 0;
 
-  /* "osmdatapy/protobuf.pyx":254
+  /* "osmdatapy/protobuf.pyx":255
  *     delta_val = 0
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -5292,7 +5292,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
     __pyx_t_1 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_1) break;
 
-    /* "osmdatapy/protobuf.pyx":255
+    /* "osmdatapy/protobuf.pyx":256
  * 
  *     while offset < rep_offset:
  *         value, offset = _signedvarint32(block, offset)             # <<<<<<<<<<<<<<
@@ -5305,7 +5305,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
     __pyx_v_value = __pyx_t_3;
     __pyx_v_offset = __pyx_t_4;
 
-    /* "osmdatapy/protobuf.pyx":256
+    /* "osmdatapy/protobuf.pyx":257
  *     while offset < rep_offset:
  *         value, offset = _signedvarint32(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5315,7 +5315,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
     __pyx_t_1 = (__pyx_v_delta != 0);
     if (__pyx_t_1) {
 
-      /* "osmdatapy/protobuf.pyx":257
+      /* "osmdatapy/protobuf.pyx":258
  *         value, offset = _signedvarint32(block, offset)
  *         if delta:
  *             value = delta_val + value             # <<<<<<<<<<<<<<
@@ -5324,7 +5324,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
       __pyx_v_value = (__pyx_v_delta_val + __pyx_v_value);
 
-      /* "osmdatapy/protobuf.pyx":258
+      /* "osmdatapy/protobuf.pyx":259
  *         if delta:
  *             value = delta_val + value
  *             delta_val = value             # <<<<<<<<<<<<<<
@@ -5333,7 +5333,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
       __pyx_v_delta_val = __pyx_v_value;
 
-      /* "osmdatapy/protobuf.pyx":256
+      /* "osmdatapy/protobuf.pyx":257
  *     while offset < rep_offset:
  *         value, offset = _signedvarint32(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5342,7 +5342,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
  */
     }
 
-    /* "osmdatapy/protobuf.pyx":259
+    /* "osmdatapy/protobuf.pyx":260
  *             value = delta_val + value
  *             delta_val = value
  *         arr[size] = value             # <<<<<<<<<<<<<<
@@ -5352,7 +5352,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
     __pyx_t_5 = __pyx_v_size;
     *((int64_t *) ( /* dim=0 */ (__pyx_v_arr.data + __pyx_t_5 * __pyx_v_arr.strides[0]) )) = __pyx_v_value;
 
-    /* "osmdatapy/protobuf.pyx":260
+    /* "osmdatapy/protobuf.pyx":261
  *             delta_val = value
  *         arr[size] = value
  *         size+=1             # <<<<<<<<<<<<<<
@@ -5362,7 +5362,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
     __pyx_v_size = (__pyx_v_size + 1);
   }
 
-  /* "osmdatapy/protobuf.pyx":262
+  /* "osmdatapy/protobuf.pyx":263
  *         size+=1
  * 
  *     return offset, size             # <<<<<<<<<<<<<<
@@ -5374,7 +5374,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":242
+  /* "osmdatapy/protobuf.pyx":243
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_signedint32(const unsigned char[:] block, int offset, int length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5388,7 +5388,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint32
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":266
+/* "osmdatapy/protobuf.pyx":267
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_signedint64(const unsigned char[:] block, Py_ssize_t offset, Py_ssize_t length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5411,7 +5411,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
   __pyx_ctuple_int__and_int __pyx_t_6;
   __Pyx_RefNannySetupContext("packed_signedint64", 0);
 
-  /* "osmdatapy/protobuf.pyx":272
+  /* "osmdatapy/protobuf.pyx":273
  *     """
  * 
  *     cdef Py_ssize_t rep_offset = offset + length             # <<<<<<<<<<<<<<
@@ -5420,7 +5420,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
   __pyx_v_rep_offset = (__pyx_v_offset + __pyx_v_length);
 
-  /* "osmdatapy/protobuf.pyx":273
+  /* "osmdatapy/protobuf.pyx":274
  * 
  *     cdef Py_ssize_t rep_offset = offset + length
  *     cdef Py_ssize_t size = 0             # <<<<<<<<<<<<<<
@@ -5429,7 +5429,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
   __pyx_v_size = 0;
 
-  /* "osmdatapy/protobuf.pyx":276
+  /* "osmdatapy/protobuf.pyx":277
  *     cdef int64_t delta_val, value
  * 
  *     delta_val = 0             # <<<<<<<<<<<<<<
@@ -5438,7 +5438,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
   __pyx_v_delta_val = 0;
 
-  /* "osmdatapy/protobuf.pyx":278
+  /* "osmdatapy/protobuf.pyx":279
  *     delta_val = 0
  * 
  *     while offset < rep_offset:             # <<<<<<<<<<<<<<
@@ -5449,7 +5449,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
     __pyx_t_1 = ((__pyx_v_offset < __pyx_v_rep_offset) != 0);
     if (!__pyx_t_1) break;
 
-    /* "osmdatapy/protobuf.pyx":279
+    /* "osmdatapy/protobuf.pyx":280
  * 
  *     while offset < rep_offset:
  *         value, offset = _signedvarint64(block, offset)             # <<<<<<<<<<<<<<
@@ -5462,7 +5462,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
     __pyx_v_value = __pyx_t_3;
     __pyx_v_offset = __pyx_t_4;
 
-    /* "osmdatapy/protobuf.pyx":280
+    /* "osmdatapy/protobuf.pyx":281
  *     while offset < rep_offset:
  *         value, offset = _signedvarint64(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5472,7 +5472,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
     __pyx_t_1 = (__pyx_v_delta != 0);
     if (__pyx_t_1) {
 
-      /* "osmdatapy/protobuf.pyx":281
+      /* "osmdatapy/protobuf.pyx":282
  *         value, offset = _signedvarint64(block, offset)
  *         if delta:
  *             value = delta_val + value             # <<<<<<<<<<<<<<
@@ -5481,7 +5481,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
       __pyx_v_value = (__pyx_v_delta_val + __pyx_v_value);
 
-      /* "osmdatapy/protobuf.pyx":282
+      /* "osmdatapy/protobuf.pyx":283
  *         if delta:
  *             value = delta_val + value
  *             delta_val = value             # <<<<<<<<<<<<<<
@@ -5490,7 +5490,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
       __pyx_v_delta_val = __pyx_v_value;
 
-      /* "osmdatapy/protobuf.pyx":280
+      /* "osmdatapy/protobuf.pyx":281
  *     while offset < rep_offset:
  *         value, offset = _signedvarint64(block, offset)
  *         if delta:             # <<<<<<<<<<<<<<
@@ -5499,7 +5499,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
  */
     }
 
-    /* "osmdatapy/protobuf.pyx":283
+    /* "osmdatapy/protobuf.pyx":284
  *             value = delta_val + value
  *             delta_val = value
  *         arr[size] = value             # <<<<<<<<<<<<<<
@@ -5509,7 +5509,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
     __pyx_t_5 = __pyx_v_size;
     *((int64_t *) ( /* dim=0 */ (__pyx_v_arr.data + __pyx_t_5 * __pyx_v_arr.strides[0]) )) = __pyx_v_value;
 
-    /* "osmdatapy/protobuf.pyx":284
+    /* "osmdatapy/protobuf.pyx":285
  *             delta_val = value
  *         arr[size] = value
  *         size+=1             # <<<<<<<<<<<<<<
@@ -5519,7 +5519,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
     __pyx_v_size = (__pyx_v_size + 1);
   }
 
-  /* "osmdatapy/protobuf.pyx":286
+  /* "osmdatapy/protobuf.pyx":287
  *         size+=1
  * 
  *     return offset, size             # <<<<<<<<<<<<<<
@@ -5531,7 +5531,7 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
   __pyx_r = __pyx_t_6;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":266
+  /* "osmdatapy/protobuf.pyx":267
  * @cython.boundscheck(False)
  * @cython.wraparound(False)
  * cdef (int, int) packed_signedint64(const unsigned char[:] block, Py_ssize_t offset, Py_ssize_t length, bint delta, int64_t[:] arr):             # <<<<<<<<<<<<<<
@@ -5545,15 +5545,15 @@ static __pyx_ctuple_int__and_int __pyx_f_9osmdatapy_8protobuf_packed_signedint64
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":293
+/* "osmdatapy/protobuf.pyx":294
  * 
  * @cython.boundscheck(False)
- * cdef (int, int, int64_t) _get_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * cdef (int, int, int64_t) _pbf_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  * 
  *     cdef int64_t v, length
  */
 
-static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_key(__Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset) {
+static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__pbf_key(__Pyx_memviewslice __pyx_v_block, Py_ssize_t __pyx_v_offset) {
   int64_t __pyx_v_v;
   int64_t __pyx_v_length;
   Py_ssize_t __pyx_v_new_offset;
@@ -5565,9 +5565,9 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
   int64_t __pyx_t_2;
   int __pyx_t_3;
   __pyx_ctuple_int__and_int__and_int64_t __pyx_t_4;
-  __Pyx_RefNannySetupContext("_get_key", 0);
+  __Pyx_RefNannySetupContext("_pbf_key", 0);
 
-  /* "osmdatapy/protobuf.pyx":298
+  /* "osmdatapy/protobuf.pyx":299
  *     cdef Py_ssize_t new_offset, key, wiretype
  * 
  *     v, new_offset = _varint64(block, offset)             # <<<<<<<<<<<<<<
@@ -5580,7 +5580,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
   __pyx_v_v = __pyx_t_2;
   __pyx_v_new_offset = __pyx_t_3;
 
-  /* "osmdatapy/protobuf.pyx":301
+  /* "osmdatapy/protobuf.pyx":302
  * 
  *     # split key and wiretype in last 3 bits
  *     key = v >> 3             # <<<<<<<<<<<<<<
@@ -5589,7 +5589,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
  */
   __pyx_v_key = (__pyx_v_v >> 3);
 
-  /* "osmdatapy/protobuf.pyx":302
+  /* "osmdatapy/protobuf.pyx":303
  *     # split key and wiretype in last 3 bits
  *     key = v >> 3
  *     wiretype = v & 0x7             # <<<<<<<<<<<<<<
@@ -5598,7 +5598,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
  */
   __pyx_v_wiretype = (__pyx_v_v & 0x7);
 
-  /* "osmdatapy/protobuf.pyx":304
+  /* "osmdatapy/protobuf.pyx":305
  *     wiretype = v & 0x7
  * 
  *     if wiretype == 1:             # <<<<<<<<<<<<<<
@@ -5608,7 +5608,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
   switch (__pyx_v_wiretype) {
     case 1:
 
-    /* "osmdatapy/protobuf.pyx":305
+    /* "osmdatapy/protobuf.pyx":306
  * 
  *     if wiretype == 1:
  *         length = 8             # <<<<<<<<<<<<<<
@@ -5617,7 +5617,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
  */
     __pyx_v_length = 8;
 
-    /* "osmdatapy/protobuf.pyx":304
+    /* "osmdatapy/protobuf.pyx":305
  *     wiretype = v & 0x7
  * 
  *     if wiretype == 1:             # <<<<<<<<<<<<<<
@@ -5627,7 +5627,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     break;
     case 5:
 
-    /* "osmdatapy/protobuf.pyx":307
+    /* "osmdatapy/protobuf.pyx":308
  *         length = 8
  *     elif wiretype == 5:
  *         length = 4             # <<<<<<<<<<<<<<
@@ -5636,7 +5636,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
  */
     __pyx_v_length = 4;
 
-    /* "osmdatapy/protobuf.pyx":306
+    /* "osmdatapy/protobuf.pyx":307
  *     if wiretype == 1:
  *         length = 8
  *     elif wiretype == 5:             # <<<<<<<<<<<<<<
@@ -5646,7 +5646,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     break;
     case 2:
 
-    /* "osmdatapy/protobuf.pyx":311
+    /* "osmdatapy/protobuf.pyx":312
  *     # if length delimited, read value length and shift offset
  *     elif wiretype == 2:
  *         length, new_offset = _varint64(block, new_offset)             # <<<<<<<<<<<<<<
@@ -5659,7 +5659,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     __pyx_v_length = __pyx_t_2;
     __pyx_v_new_offset = __pyx_t_3;
 
-    /* "osmdatapy/protobuf.pyx":312
+    /* "osmdatapy/protobuf.pyx":313
  *     elif wiretype == 2:
  *         length, new_offset = _varint64(block, new_offset)
  *         return key, new_offset, length             # <<<<<<<<<<<<<<
@@ -5672,7 +5672,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     __pyx_r = __pyx_t_4;
     goto __pyx_L0;
 
-    /* "osmdatapy/protobuf.pyx":310
+    /* "osmdatapy/protobuf.pyx":311
  * 
  *     # if length delimited, read value length and shift offset
  *     elif wiretype == 2:             # <<<<<<<<<<<<<<
@@ -5682,7 +5682,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     break;
     default:
 
-    /* "osmdatapy/protobuf.pyx":314
+    /* "osmdatapy/protobuf.pyx":315
  *         return key, new_offset, length
  *     else:
  *         length = 0             # <<<<<<<<<<<<<<
@@ -5693,7 +5693,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
     break;
   }
 
-  /* "osmdatapy/protobuf.pyx":316
+  /* "osmdatapy/protobuf.pyx":317
  *         length = 0
  * 
  *     return key, new_offset, length             # <<<<<<<<<<<<<<
@@ -5706,10 +5706,10 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
   __pyx_r = __pyx_t_4;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":293
+  /* "osmdatapy/protobuf.pyx":294
  * 
  * @cython.boundscheck(False)
- * cdef (int, int, int64_t) _get_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * cdef (int, int, int64_t) _pbf_key(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  * 
  *     cdef int64_t v, length
  */
@@ -5720,7 +5720,7 @@ static __pyx_ctuple_int__and_int__and_int64_t __pyx_f_9osmdatapy_8protobuf__get_
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":319
+/* "osmdatapy/protobuf.pyx":320
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -5740,7 +5740,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
   __pyx_ctuple_int64_t__and_int __pyx_t_3;
   __Pyx_RefNannySetupContext("_varint32", 0);
 
-  /* "osmdatapy/protobuf.pyx":325
+  /* "osmdatapy/protobuf.pyx":326
  *     """
  * 
  *     cdef int32_t base = 1             # <<<<<<<<<<<<<<
@@ -5749,7 +5749,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
   __pyx_v_base = 1;
 
-  /* "osmdatapy/protobuf.pyx":326
+  /* "osmdatapy/protobuf.pyx":327
  * 
  *     cdef int32_t base = 1
  *     cdef Py_ssize_t index = 0             # <<<<<<<<<<<<<<
@@ -5758,7 +5758,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
   __pyx_v_index = 0;
 
-  /* "osmdatapy/protobuf.pyx":327
+  /* "osmdatapy/protobuf.pyx":328
  *     cdef int32_t base = 1
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]             # <<<<<<<<<<<<<<
@@ -5769,7 +5769,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
   __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-  /* "osmdatapy/protobuf.pyx":328
+  /* "osmdatapy/protobuf.pyx":329
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]
  *     cdef int32_t value = (val_byte & 0x7F)             # <<<<<<<<<<<<<<
@@ -5778,7 +5778,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
   __pyx_v_value = (__pyx_v_val_byte & 0x7F);
 
-  /* "osmdatapy/protobuf.pyx":330
+  /* "osmdatapy/protobuf.pyx":331
  *     cdef int32_t value = (val_byte & 0x7F)
  * 
  *     while (val_byte & 0x80):             # <<<<<<<<<<<<<<
@@ -5789,7 +5789,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
     __pyx_t_2 = ((__pyx_v_val_byte & 0x80) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":331
+    /* "osmdatapy/protobuf.pyx":332
  * 
  *     while (val_byte & 0x80):
  *         base *= 128             # <<<<<<<<<<<<<<
@@ -5798,7 +5798,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
     __pyx_v_base = (__pyx_v_base * 0x80);
 
-    /* "osmdatapy/protobuf.pyx":332
+    /* "osmdatapy/protobuf.pyx":333
  *     while (val_byte & 0x80):
  *         base *= 128
  *         index += 1             # <<<<<<<<<<<<<<
@@ -5807,7 +5807,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "osmdatapy/protobuf.pyx":333
+    /* "osmdatapy/protobuf.pyx":334
  *         base *= 128
  *         index += 1
  *         val_byte = block[offset + index]             # <<<<<<<<<<<<<<
@@ -5818,7 +5818,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
     if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
     __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-    /* "osmdatapy/protobuf.pyx":334
+    /* "osmdatapy/protobuf.pyx":335
  *         index += 1
  *         val_byte = block[offset + index]
  *         value += (val_byte & 0x7F) * base             # <<<<<<<<<<<<<<
@@ -5828,7 +5828,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
     __pyx_v_value = (__pyx_v_value + ((__pyx_v_val_byte & 0x7F) * __pyx_v_base));
   }
 
-  /* "osmdatapy/protobuf.pyx":336
+  /* "osmdatapy/protobuf.pyx":337
  *         value += (val_byte & 0x7F) * base
  * 
  *     offset += (index + 1)             # <<<<<<<<<<<<<<
@@ -5837,7 +5837,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
  */
   __pyx_v_offset = (__pyx_v_offset + (__pyx_v_index + 1));
 
-  /* "osmdatapy/protobuf.pyx":337
+  /* "osmdatapy/protobuf.pyx":338
  * 
  *     offset += (index + 1)
  *     return <int64_t>value, offset             # <<<<<<<<<<<<<<
@@ -5849,7 +5849,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":319
+  /* "osmdatapy/protobuf.pyx":320
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -5863,7 +5863,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint32(__Py
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":340
+/* "osmdatapy/protobuf.pyx":341
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varuint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -5883,7 +5883,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
   __pyx_ctuple_int64_t__and_int __pyx_t_3;
   __Pyx_RefNannySetupContext("_varuint32", 0);
 
-  /* "osmdatapy/protobuf.pyx":346
+  /* "osmdatapy/protobuf.pyx":347
  *     """
  * 
  *     cdef uint32_t base = 1             # <<<<<<<<<<<<<<
@@ -5892,7 +5892,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
   __pyx_v_base = 1;
 
-  /* "osmdatapy/protobuf.pyx":347
+  /* "osmdatapy/protobuf.pyx":348
  * 
  *     cdef uint32_t base = 1
  *     cdef Py_ssize_t index = 0             # <<<<<<<<<<<<<<
@@ -5901,7 +5901,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
   __pyx_v_index = 0;
 
-  /* "osmdatapy/protobuf.pyx":348
+  /* "osmdatapy/protobuf.pyx":349
  *     cdef uint32_t base = 1
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]             # <<<<<<<<<<<<<<
@@ -5912,7 +5912,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
   __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-  /* "osmdatapy/protobuf.pyx":349
+  /* "osmdatapy/protobuf.pyx":350
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]
  *     cdef uint32_t value = (val_byte & 0x7F)             # <<<<<<<<<<<<<<
@@ -5921,7 +5921,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
   __pyx_v_value = (__pyx_v_val_byte & 0x7F);
 
-  /* "osmdatapy/protobuf.pyx":351
+  /* "osmdatapy/protobuf.pyx":352
  *     cdef uint32_t value = (val_byte & 0x7F)
  * 
  *     while (val_byte & 0x80):             # <<<<<<<<<<<<<<
@@ -5932,7 +5932,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
     __pyx_t_2 = ((__pyx_v_val_byte & 0x80) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":352
+    /* "osmdatapy/protobuf.pyx":353
  * 
  *     while (val_byte & 0x80):
  *         base *= 128             # <<<<<<<<<<<<<<
@@ -5941,7 +5941,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
     __pyx_v_base = (__pyx_v_base * 0x80);
 
-    /* "osmdatapy/protobuf.pyx":353
+    /* "osmdatapy/protobuf.pyx":354
  *     while (val_byte & 0x80):
  *         base *= 128
  *         index += 1             # <<<<<<<<<<<<<<
@@ -5950,7 +5950,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "osmdatapy/protobuf.pyx":354
+    /* "osmdatapy/protobuf.pyx":355
  *         base *= 128
  *         index += 1
  *         val_byte = block[offset + index]             # <<<<<<<<<<<<<<
@@ -5961,7 +5961,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
     if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
     __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-    /* "osmdatapy/protobuf.pyx":355
+    /* "osmdatapy/protobuf.pyx":356
  *         index += 1
  *         val_byte = block[offset + index]
  *         value += (val_byte & 0x7F) * base             # <<<<<<<<<<<<<<
@@ -5971,7 +5971,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
     __pyx_v_value = (__pyx_v_value + ((__pyx_v_val_byte & 0x7F) * __pyx_v_base));
   }
 
-  /* "osmdatapy/protobuf.pyx":357
+  /* "osmdatapy/protobuf.pyx":358
  *         value += (val_byte & 0x7F) * base
  * 
  *     offset += (index + 1)             # <<<<<<<<<<<<<<
@@ -5980,7 +5980,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
  */
   __pyx_v_offset = (__pyx_v_offset + (__pyx_v_index + 1));
 
-  /* "osmdatapy/protobuf.pyx":358
+  /* "osmdatapy/protobuf.pyx":359
  * 
  *     offset += (index + 1)
  *     return <int64_t>value, offset             # <<<<<<<<<<<<<<
@@ -5992,7 +5992,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":340
+  /* "osmdatapy/protobuf.pyx":341
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varuint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6006,7 +6006,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varuint32(__P
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":361
+/* "osmdatapy/protobuf.pyx":362
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varint64(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6026,7 +6026,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
   __pyx_ctuple_int64_t__and_int __pyx_t_3;
   __Pyx_RefNannySetupContext("_varint64", 0);
 
-  /* "osmdatapy/protobuf.pyx":366
+  /* "osmdatapy/protobuf.pyx":367
  *     update offset based on number of bytes consumed.
  *     """
  *     cdef int64_t base = 1             # <<<<<<<<<<<<<<
@@ -6035,7 +6035,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
   __pyx_v_base = 1;
 
-  /* "osmdatapy/protobuf.pyx":367
+  /* "osmdatapy/protobuf.pyx":368
  *     """
  *     cdef int64_t base = 1
  *     cdef Py_ssize_t index = 0             # <<<<<<<<<<<<<<
@@ -6044,7 +6044,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
   __pyx_v_index = 0;
 
-  /* "osmdatapy/protobuf.pyx":368
+  /* "osmdatapy/protobuf.pyx":369
  *     cdef int64_t base = 1
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]             # <<<<<<<<<<<<<<
@@ -6055,7 +6055,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
   __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-  /* "osmdatapy/protobuf.pyx":369
+  /* "osmdatapy/protobuf.pyx":370
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]
  *     cdef int64_t value = (val_byte & 0x7F)             # <<<<<<<<<<<<<<
@@ -6064,7 +6064,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
   __pyx_v_value = (__pyx_v_val_byte & 0x7F);
 
-  /* "osmdatapy/protobuf.pyx":371
+  /* "osmdatapy/protobuf.pyx":372
  *     cdef int64_t value = (val_byte & 0x7F)
  * 
  *     while (val_byte & 0x80):             # <<<<<<<<<<<<<<
@@ -6075,7 +6075,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
     __pyx_t_2 = ((__pyx_v_val_byte & 0x80) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":372
+    /* "osmdatapy/protobuf.pyx":373
  * 
  *     while (val_byte & 0x80):
  *         base *= 128             # <<<<<<<<<<<<<<
@@ -6084,7 +6084,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
     __pyx_v_base = (__pyx_v_base * 0x80);
 
-    /* "osmdatapy/protobuf.pyx":373
+    /* "osmdatapy/protobuf.pyx":374
  *     while (val_byte & 0x80):
  *         base *= 128
  *         index += 1             # <<<<<<<<<<<<<<
@@ -6093,7 +6093,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "osmdatapy/protobuf.pyx":374
+    /* "osmdatapy/protobuf.pyx":375
  *         base *= 128
  *         index += 1
  *         val_byte = block[offset + index]             # <<<<<<<<<<<<<<
@@ -6104,7 +6104,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
     if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
     __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-    /* "osmdatapy/protobuf.pyx":375
+    /* "osmdatapy/protobuf.pyx":376
  *         index += 1
  *         val_byte = block[offset + index]
  *         value += (val_byte & 0x7F) * base             # <<<<<<<<<<<<<<
@@ -6114,7 +6114,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
     __pyx_v_value = (__pyx_v_value + ((__pyx_v_val_byte & 0x7F) * __pyx_v_base));
   }
 
-  /* "osmdatapy/protobuf.pyx":377
+  /* "osmdatapy/protobuf.pyx":378
  *         value += (val_byte & 0x7F) * base
  * 
  *     offset += (index + 1)             # <<<<<<<<<<<<<<
@@ -6123,7 +6123,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
  */
   __pyx_v_offset = (__pyx_v_offset + (__pyx_v_index + 1));
 
-  /* "osmdatapy/protobuf.pyx":378
+  /* "osmdatapy/protobuf.pyx":379
  * 
  *     offset += (index + 1)
  *     return <int64_t>value, offset             # <<<<<<<<<<<<<<
@@ -6135,7 +6135,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":361
+  /* "osmdatapy/protobuf.pyx":362
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _varint64(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6149,7 +6149,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__varint64(__Py
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":381
+/* "osmdatapy/protobuf.pyx":382
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _signedvarint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6169,7 +6169,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
   __pyx_ctuple_int64_t__and_int __pyx_t_3;
   __Pyx_RefNannySetupContext("_signedvarint32", 0);
 
-  /* "osmdatapy/protobuf.pyx":386
+  /* "osmdatapy/protobuf.pyx":387
  *     update offset based on number of bytes consumed.
  *     """
  *     cdef int32_t base = 1             # <<<<<<<<<<<<<<
@@ -6178,7 +6178,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
   __pyx_v_base = 1;
 
-  /* "osmdatapy/protobuf.pyx":387
+  /* "osmdatapy/protobuf.pyx":388
  *     """
  *     cdef int32_t base = 1
  *     cdef Py_ssize_t index = 0             # <<<<<<<<<<<<<<
@@ -6187,7 +6187,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
   __pyx_v_index = 0;
 
-  /* "osmdatapy/protobuf.pyx":388
+  /* "osmdatapy/protobuf.pyx":389
  *     cdef int32_t base = 1
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]             # <<<<<<<<<<<<<<
@@ -6198,7 +6198,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
   __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-  /* "osmdatapy/protobuf.pyx":389
+  /* "osmdatapy/protobuf.pyx":390
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]
  *     cdef uint32_t value = (val_byte & 0x7F)             # <<<<<<<<<<<<<<
@@ -6207,7 +6207,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
   __pyx_v_value = (__pyx_v_val_byte & 0x7F);
 
-  /* "osmdatapy/protobuf.pyx":391
+  /* "osmdatapy/protobuf.pyx":392
  *     cdef uint32_t value = (val_byte & 0x7F)
  * 
  *     while (val_byte & 0x80):             # <<<<<<<<<<<<<<
@@ -6218,7 +6218,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
     __pyx_t_2 = ((__pyx_v_val_byte & 0x80) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":392
+    /* "osmdatapy/protobuf.pyx":393
  * 
  *     while (val_byte & 0x80):
  *         base *= 128             # <<<<<<<<<<<<<<
@@ -6227,7 +6227,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
     __pyx_v_base = (__pyx_v_base * 0x80);
 
-    /* "osmdatapy/protobuf.pyx":393
+    /* "osmdatapy/protobuf.pyx":394
  *     while (val_byte & 0x80):
  *         base *= 128
  *         index += 1             # <<<<<<<<<<<<<<
@@ -6236,7 +6236,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "osmdatapy/protobuf.pyx":394
+    /* "osmdatapy/protobuf.pyx":395
  *         base *= 128
  *         index += 1
  *         val_byte = block[offset + index]             # <<<<<<<<<<<<<<
@@ -6247,7 +6247,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
     if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
     __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-    /* "osmdatapy/protobuf.pyx":395
+    /* "osmdatapy/protobuf.pyx":396
  *         index += 1
  *         val_byte = block[offset + index]
  *         value += (val_byte & 0x7F) * base             # <<<<<<<<<<<<<<
@@ -6257,7 +6257,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
     __pyx_v_value = (__pyx_v_value + ((__pyx_v_val_byte & 0x7F) * __pyx_v_base));
   }
 
-  /* "osmdatapy/protobuf.pyx":397
+  /* "osmdatapy/protobuf.pyx":398
  *         value += (val_byte & 0x7F) * base
  * 
  *     offset += (index + 1)             # <<<<<<<<<<<<<<
@@ -6266,7 +6266,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
  */
   __pyx_v_offset = (__pyx_v_offset + (__pyx_v_index + 1));
 
-  /* "osmdatapy/protobuf.pyx":400
+  /* "osmdatapy/protobuf.pyx":401
  * 
  *     #zigzag decode
  *     return <int64_t>((value >> 1) ^ (-(value & 1))), offset             # <<<<<<<<<<<<<<
@@ -6278,7 +6278,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":381
+  /* "osmdatapy/protobuf.pyx":382
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _signedvarint32(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6292,7 +6292,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint3
   return __pyx_r;
 }
 
-/* "osmdatapy/protobuf.pyx":403
+/* "osmdatapy/protobuf.pyx":404
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _signedvarint64(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -6312,7 +6312,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
   __pyx_ctuple_int64_t__and_int __pyx_t_3;
   __Pyx_RefNannySetupContext("_signedvarint64", 0);
 
-  /* "osmdatapy/protobuf.pyx":408
+  /* "osmdatapy/protobuf.pyx":409
  *     update offset based on number of bytes consumed.
  *     """
  *     cdef int64_t base = 1             # <<<<<<<<<<<<<<
@@ -6321,7 +6321,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
   __pyx_v_base = 1;
 
-  /* "osmdatapy/protobuf.pyx":409
+  /* "osmdatapy/protobuf.pyx":410
  *     """
  *     cdef int64_t base = 1
  *     cdef Py_ssize_t index = 0             # <<<<<<<<<<<<<<
@@ -6330,7 +6330,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
   __pyx_v_index = 0;
 
-  /* "osmdatapy/protobuf.pyx":410
+  /* "osmdatapy/protobuf.pyx":411
  *     cdef int64_t base = 1
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]             # <<<<<<<<<<<<<<
@@ -6341,7 +6341,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
   if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
   __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-  /* "osmdatapy/protobuf.pyx":411
+  /* "osmdatapy/protobuf.pyx":412
  *     cdef Py_ssize_t index = 0
  *     cdef char val_byte = block[offset]
  *     cdef uint64_t value = (val_byte & 0x7F)             # <<<<<<<<<<<<<<
@@ -6350,7 +6350,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
   __pyx_v_value = (__pyx_v_val_byte & 0x7F);
 
-  /* "osmdatapy/protobuf.pyx":413
+  /* "osmdatapy/protobuf.pyx":414
  *     cdef uint64_t value = (val_byte & 0x7F)
  * 
  *     while (val_byte & 0x80):             # <<<<<<<<<<<<<<
@@ -6361,7 +6361,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
     __pyx_t_2 = ((__pyx_v_val_byte & 0x80) != 0);
     if (!__pyx_t_2) break;
 
-    /* "osmdatapy/protobuf.pyx":414
+    /* "osmdatapy/protobuf.pyx":415
  * 
  *     while (val_byte & 0x80):
  *         base *= 128             # <<<<<<<<<<<<<<
@@ -6370,7 +6370,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
     __pyx_v_base = (__pyx_v_base * 0x80);
 
-    /* "osmdatapy/protobuf.pyx":415
+    /* "osmdatapy/protobuf.pyx":416
  *     while (val_byte & 0x80):
  *         base *= 128
  *         index += 1             # <<<<<<<<<<<<<<
@@ -6379,7 +6379,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
     __pyx_v_index = (__pyx_v_index + 1);
 
-    /* "osmdatapy/protobuf.pyx":416
+    /* "osmdatapy/protobuf.pyx":417
  *         base *= 128
  *         index += 1
  *         val_byte = block[offset + index]             # <<<<<<<<<<<<<<
@@ -6390,7 +6390,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
     if (__pyx_t_1 < 0) __pyx_t_1 += __pyx_v_block.shape[0];
     __pyx_v_val_byte = (*((unsigned char const  *) ( /* dim=0 */ (__pyx_v_block.data + __pyx_t_1 * __pyx_v_block.strides[0]) )));
 
-    /* "osmdatapy/protobuf.pyx":417
+    /* "osmdatapy/protobuf.pyx":418
  *         index += 1
  *         val_byte = block[offset + index]
  *         value += (val_byte & 0x7F) * base             # <<<<<<<<<<<<<<
@@ -6400,7 +6400,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
     __pyx_v_value = (__pyx_v_value + ((__pyx_v_val_byte & 0x7F) * __pyx_v_base));
   }
 
-  /* "osmdatapy/protobuf.pyx":419
+  /* "osmdatapy/protobuf.pyx":420
  *         value += (val_byte & 0x7F) * base
  * 
  *     offset += (index + 1)             # <<<<<<<<<<<<<<
@@ -6409,7 +6409,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
  */
   __pyx_v_offset = (__pyx_v_offset + (__pyx_v_index + 1));
 
-  /* "osmdatapy/protobuf.pyx":422
+  /* "osmdatapy/protobuf.pyx":423
  * 
  *     #zigzag decode
  *     return <int64_t>((value >> 1) ^ (-(value & 1))), offset             # <<<<<<<<<<<<<<
@@ -6419,7 +6419,7 @@ static __pyx_ctuple_int64_t__and_int __pyx_f_9osmdatapy_8protobuf__signedvarint6
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
-  /* "osmdatapy/protobuf.pyx":403
+  /* "osmdatapy/protobuf.pyx":404
  * 
  * @cython.boundscheck(False)
  * cdef (int64_t, int) _signedvarint64(const unsigned char[:] block, Py_ssize_t offset):             # <<<<<<<<<<<<<<
@@ -20928,7 +20928,6 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_format, __pyx_k_format, sizeof(__pyx_k_format), 0, 0, 1, 1},
   {&__pyx_n_s_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 0, 1, 1},
   {&__pyx_n_u_fortran, __pyx_k_fortran, sizeof(__pyx_k_fortran), 0, 1, 0, 1},
-  {&__pyx_n_s_get_key, __pyx_k_get_key, sizeof(__pyx_k_get_key), 0, 0, 1, 1},
   {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
   {&__pyx_kp_s_got_differing_extents_in_dimensi, __pyx_k_got_differing_extents_in_dimensi, sizeof(__pyx_k_got_differing_extents_in_dimensi), 0, 0, 1, 0},
   {&__pyx_n_s_i, __pyx_k_i, sizeof(__pyx_k_i), 0, 0, 1, 1},
@@ -20964,6 +20963,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_pack, __pyx_k_pack, sizeof(__pyx_k_pack), 0, 0, 1, 1},
   {&__pyx_n_s_pack_tag_val, __pyx_k_pack_tag_val, sizeof(__pyx_k_pack_tag_val), 0, 0, 1, 1},
   {&__pyx_n_s_packed, __pyx_k_packed, sizeof(__pyx_k_packed), 0, 0, 1, 1},
+  {&__pyx_n_s_pbf_key, __pyx_k_pbf_key, sizeof(__pyx_k_pbf_key), 0, 0, 1, 1},
   {&__pyx_n_s_pickle, __pyx_k_pickle, sizeof(__pyx_k_pickle), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_PickleError, __pyx_k_pyx_PickleError, sizeof(__pyx_k_pyx_PickleError), 0, 0, 1, 1},
   {&__pyx_n_s_pyx_checksum, __pyx_k_pyx_checksum, sizeof(__pyx_k_pyx_checksum), 0, 0, 1, 1},
@@ -21012,8 +21012,8 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {0, 0, 0, 0, 0, 0, 0}
 };
 static CYTHON_SMALL_CODE int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 163, __pyx_L1_error)
-  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 165, __pyx_L1_error)
+  __pyx_builtin_ValueError = __Pyx_GetBuiltinName(__pyx_n_s_ValueError); if (!__pyx_builtin_ValueError) __PYX_ERR(0, 164, __pyx_L1_error)
+  __pyx_builtin_range = __Pyx_GetBuiltinName(__pyx_n_s_range); if (!__pyx_builtin_range) __PYX_ERR(0, 166, __pyx_L1_error)
   __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(1, 109, __pyx_L1_error)
   __pyx_builtin_enumerate = __Pyx_GetBuiltinName(__pyx_n_s_enumerate); if (!__pyx_builtin_enumerate) __PYX_ERR(2, 151, __pyx_L1_error)
   __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(2, 2, __pyx_L1_error)
@@ -21029,14 +21029,14 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "osmdatapy/protobuf.pyx":163
+  /* "osmdatapy/protobuf.pyx":164
  * 
  *     if l != len(vals):
  *         raise ValueError("tags and vals must hase same length")             # <<<<<<<<<<<<<<
  * 
  *     for i in range(l):
  */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_tags_and_vals_must_hase_same_len); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 163, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_u_tags_and_vals_must_hase_same_len); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 164, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple_);
   __Pyx_GIVEREF(__pyx_tuple_);
 
@@ -21235,89 +21235,89 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__20);
   __Pyx_GIVEREF(__pyx_tuple__20);
 
-  /* "osmdatapy/protobuf.pyx":9
+  /* "osmdatapy/protobuf.pyx":10
  * 
  * @cython.boundscheck(False)
  * def packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
  *     """
  *     returns a python array of repeated scalar read with func and new offset
  */
-  __pyx_tuple__21 = PyTuple_Pack(8, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_scalar_type, __pyx_n_s_delta, __pyx_n_s_res_template, __pyx_n_s_res, __pyx_n_s_size); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_tuple__21 = PyTuple_Pack(8, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_scalar_type, __pyx_n_s_delta, __pyx_n_s_res_template, __pyx_n_s_res, __pyx_n_s_size); if (unlikely(!__pyx_tuple__21)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__21);
   __Pyx_GIVEREF(__pyx_tuple__21);
-  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(5, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_packed, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_codeobj__22 = (PyObject*)__Pyx_PyCode_New(5, 0, 8, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__21, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_packed, 10, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__22)) __PYX_ERR(0, 10, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":41
+  /* "osmdatapy/protobuf.pyx":42
  * 
  * 
  * def large_packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
  *     """
  *     returns a python array of repeated scalar read with func and new offset
  */
-  __pyx_tuple__23 = PyTuple_Pack(9, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_scalar_type, __pyx_n_s_delta, __pyx_n_s_res_template, __pyx_n_s_res, __pyx_n_s_resview, __pyx_n_s_size); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_tuple__23 = PyTuple_Pack(9, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_scalar_type, __pyx_n_s_delta, __pyx_n_s_res_template, __pyx_n_s_res, __pyx_n_s_resview, __pyx_n_s_size); if (unlikely(!__pyx_tuple__23)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__23);
   __Pyx_GIVEREF(__pyx_tuple__23);
-  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(5, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_large_packed, 41, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_codeobj__24 = (PyObject*)__Pyx_PyCode_New(5, 0, 9, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__23, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_large_packed, 42, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__24)) __PYX_ERR(0, 42, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":73
+  /* "osmdatapy/protobuf.pyx":74
  * 
  * 
  * def keyvals(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
  *     """
  *     extract dense nodes keyvals in a 3 integer numpy arrays : positon in elemid, key and value
  */
-  __pyx_tuple__25 = PyTuple_Pack(12, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_id_template, __pyx_n_s_ids, __pyx_n_s_keys, __pyx_n_s_vals, __pyx_n_s_key, __pyx_n_s_cnter, __pyx_n_s_idpos, __pyx_n_s_value, __pyx_n_s_rep_offset); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_tuple__25 = PyTuple_Pack(12, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_id_template, __pyx_n_s_ids, __pyx_n_s_keys, __pyx_n_s_vals, __pyx_n_s_key, __pyx_n_s_cnter, __pyx_n_s_idpos, __pyx_n_s_value, __pyx_n_s_rep_offset); if (unlikely(!__pyx_tuple__25)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__25);
   __Pyx_GIVEREF(__pyx_tuple__25);
-  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_keyvals, 73, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_codeobj__26 = (PyObject*)__Pyx_PyCode_New(3, 0, 12, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__25, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_keyvals, 74, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__26)) __PYX_ERR(0, 74, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":108
+  /* "osmdatapy/protobuf.pyx":109
  * 
  * 
  * def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
  *     """ Returns a byte list"""
  *     cdef list res = []
  */
-  __pyx_tuple__27 = PyTuple_Pack(7, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_res, __pyx_n_s_key, __pyx_n_s_bytesize, __pyx_n_s_list_offset); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_tuple__27 = PyTuple_Pack(7, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_length, __pyx_n_s_res, __pyx_n_s_key, __pyx_n_s_bytesize, __pyx_n_s_list_offset); if (unlikely(!__pyx_tuple__27)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__27);
   __Pyx_GIVEREF(__pyx_tuple__27);
-  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_bytelist, 108, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_codeobj__28 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__27, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_bytelist, 109, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__28)) __PYX_ERR(0, 109, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":122
+  /* "osmdatapy/protobuf.pyx":123
  *     return res, offset
  * 
- * def get_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  *     """
  *     returns key, updated offset and the length of the value
  */
-  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_n_s_block, __pyx_n_s_offset); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_tuple__29 = PyTuple_Pack(2, __pyx_n_s_block, __pyx_n_s_offset); if (unlikely(!__pyx_tuple__29)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__29);
   __Pyx_GIVEREF(__pyx_tuple__29);
-  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_get_key, 122, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_codeobj__30 = (PyObject*)__Pyx_PyCode_New(2, 0, 2, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__29, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_pbf_key, 123, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__30)) __PYX_ERR(0, 123, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":131
+  /* "osmdatapy/protobuf.pyx":132
  * 
  * 
  * def scalar(const unsigned char[:] block not None, Py_ssize_t offset, str scalar_type):             # <<<<<<<<<<<<<<
  *     """ Returns a scalar and new offset """
  * 
  */
-  __pyx_tuple__31 = PyTuple_Pack(7, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_scalar_type, __pyx_n_s_bytesize, __pyx_n_s_new_offset, __pyx_n_s_key, __pyx_n_s_val); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_tuple__31 = PyTuple_Pack(7, __pyx_n_s_block, __pyx_n_s_offset, __pyx_n_s_scalar_type, __pyx_n_s_bytesize, __pyx_n_s_new_offset, __pyx_n_s_key, __pyx_n_s_val); if (unlikely(!__pyx_tuple__31)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__31);
   __Pyx_GIVEREF(__pyx_tuple__31);
-  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_scalar, 131, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_codeobj__32 = (PyObject*)__Pyx_PyCode_New(3, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__31, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_scalar, 132, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__32)) __PYX_ERR(0, 132, __pyx_L1_error)
 
-  /* "osmdatapy/protobuf.pyx":157
+  /* "osmdatapy/protobuf.pyx":158
  *     return val, new_offset
  * 
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):             # <<<<<<<<<<<<<<
  * 
  *     cdef list res = []
  */
-  __pyx_tuple__33 = PyTuple_Pack(5, __pyx_n_s_tags, __pyx_n_s_vals, __pyx_n_s_res, __pyx_n_s_l, __pyx_n_s_i); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_tuple__33 = PyTuple_Pack(5, __pyx_n_s_tags, __pyx_n_s_vals, __pyx_n_s_res, __pyx_n_s_l, __pyx_n_s_i); if (unlikely(!__pyx_tuple__33)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__33);
   __Pyx_GIVEREF(__pyx_tuple__33);
-  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_pack_tag_val, 157, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_codeobj__34 = (PyObject*)__Pyx_PyCode_New(2, 0, 5, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__33, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_osmdatapy_protobuf_pyx, __pyx_n_s_pack_tag_val, 158, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__34)) __PYX_ERR(0, 158, __pyx_L1_error)
 
   /* "View.MemoryView":286
  *         return self.name
@@ -21764,106 +21764,106 @@ if (!__Pyx_RefNanny) {
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "osmdatapy/protobuf.pyx":5
+  /* "osmdatapy/protobuf.pyx":6
  * from libc.stdint cimport *
  * from cpython cimport array
  * import array             # <<<<<<<<<<<<<<
  * import cython
  * 
  */
-  __pyx_t_1 = __Pyx_Import(__pyx_n_s_array, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 5, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_Import(__pyx_n_s_array, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_array, __pyx_t_1) < 0) __PYX_ERR(0, 5, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_array, __pyx_t_1) < 0) __PYX_ERR(0, 6, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":9
+  /* "osmdatapy/protobuf.pyx":10
  * 
  * @cython.boundscheck(False)
  * def packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
  *     """
  *     returns a python array of repeated scalar read with func and new offset
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_1packed, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_1packed, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_packed, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_packed, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":41
+  /* "osmdatapy/protobuf.pyx":42
  * 
  * 
  * def large_packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):             # <<<<<<<<<<<<<<
  *     """
  *     returns a python array of repeated scalar read with func and new offset
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_3large_packed, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_3large_packed, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_large_packed, __pyx_t_1) < 0) __PYX_ERR(0, 41, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_large_packed, __pyx_t_1) < 0) __PYX_ERR(0, 42, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":73
+  /* "osmdatapy/protobuf.pyx":74
  * 
  * 
  * def keyvals(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
  *     """
  *     extract dense nodes keyvals in a 3 integer numpy arrays : positon in elemid, key and value
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_5keyvals, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 73, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_5keyvals, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_keyvals, __pyx_t_1) < 0) __PYX_ERR(0, 73, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_keyvals, __pyx_t_1) < 0) __PYX_ERR(0, 74, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":108
+  /* "osmdatapy/protobuf.pyx":109
  * 
  * 
  * def bytelist(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length):             # <<<<<<<<<<<<<<
  *     """ Returns a byte list"""
  *     cdef list res = []
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_7bytelist, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 108, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_7bytelist, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bytelist, __pyx_t_1) < 0) __PYX_ERR(0, 108, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_bytelist, __pyx_t_1) < 0) __PYX_ERR(0, 109, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":122
+  /* "osmdatapy/protobuf.pyx":123
  *     return res, offset
  * 
- * def get_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
+ * def pbf_key(const unsigned char[:] block not None, Py_ssize_t offset):             # <<<<<<<<<<<<<<
  *     """
  *     returns key, updated offset and the length of the value
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_9get_key, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 122, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_9pbf_key, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_get_key, __pyx_t_1) < 0) __PYX_ERR(0, 122, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pbf_key, __pyx_t_1) < 0) __PYX_ERR(0, 123, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":131
+  /* "osmdatapy/protobuf.pyx":132
  * 
  * 
  * def scalar(const unsigned char[:] block not None, Py_ssize_t offset, str scalar_type):             # <<<<<<<<<<<<<<
  *     """ Returns a scalar and new offset """
  * 
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_11scalar, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 131, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_11scalar, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scalar, __pyx_t_1) < 0) __PYX_ERR(0, 131, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_scalar, __pyx_t_1) < 0) __PYX_ERR(0, 132, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "osmdatapy/protobuf.pyx":157
+  /* "osmdatapy/protobuf.pyx":158
  *     return val, new_offset
  * 
  * def pack_tag_val(int64_t[:] tags, int64_t[:] vals):             # <<<<<<<<<<<<<<
  * 
  *     cdef list res = []
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_13pack_tag_val, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 157, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_9osmdatapy_8protobuf_13pack_tag_val, NULL, __pyx_n_s_osmdatapy_protobuf); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pack_tag_val, __pyx_t_1) < 0) __PYX_ERR(0, 157, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_pack_tag_val, __pyx_t_1) < 0) __PYX_ERR(0, 158, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "osmdatapy/protobuf.pyx":1
- * # Protocol buffer parsing functions             # <<<<<<<<<<<<<<
+ * #cython: language_level=3             # <<<<<<<<<<<<<<
+ * # Protocol buffer parsing functions
  * 
- * from libc.stdint cimport *
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);

@@ -15,7 +15,7 @@ def parse_header(data):
 
     while offset < length:
 
-        key, offset, l = protobuf.get_key(data, offset)
+        key, offset, l = protobuf.pbf_key(data, offset)
         if key == 1:
             string = bytearray(data[offset : offset + l]).decode()
             offset += l
@@ -39,7 +39,7 @@ def parse_blob(data):
     compression = None
 
     while offset < length:
-        key, offset, l = protobuf.get_key(data, offset)
+        key, offset, l = protobuf.pbf_key(data, offset)
 
         if key == 1:
             st_offset = offset
@@ -98,7 +98,7 @@ def parse_blockheader(data, compression):
         length = len(block_data)
 
     while offset < length:
-        key, offset, l = protobuf.get_key(d, offset)
+        key, offset, l = protobuf.pbf_key(d, offset)
 
         # required features
         if key == 4:
@@ -153,7 +153,7 @@ def parse_cache_block(data, compression="zlib"):
     ids, lons, lats = array.array("q", []), array.array("q", []), array.array("q", [])
 
     while offset < block_length:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
             strtable, offset = stringtable(block, offset, l)
@@ -250,7 +250,7 @@ def parse_primitive_group(block, offset, length):
     lats = array.array("q", [])
 
     while offset < group_offset:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
         ref_offset = offset
 
         if key == 1:
@@ -284,7 +284,7 @@ def cached_dense(block, offset, length):
     elemid, lon, lat = [0],[0],[0]
 
     while offset < message_offset:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
         if key == 1:
             elemid, offset = protobuf.large_packed(block, offset, l, "sint64", delta=True)
         elif key == 8:
@@ -303,7 +303,7 @@ def cached_node(block, offset, length, res):
     message_offset = offset + length
 
     while offset < message_offset:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
         if key == 1:
             elemid, offset = protobuf.scalar(block, offset, "sint64")
         elif key == 8:
@@ -323,7 +323,7 @@ def cached_relation_or_way(block, offset, length):
     message_offset = offset + length
     elemid=0
     while offset < message_offset:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
         if key == 1:
             elemid, offset = protobuf.scalar(block, offset, "int64")
             return message_offset, elemid

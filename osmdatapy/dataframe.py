@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 
-from _geometry import points, linestrings, polygons, _simple_ix
+from ._geometry import points, linestrings, polygons, _simple_ix
 
 
 class Frame:

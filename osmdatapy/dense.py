@@ -2,7 +2,7 @@
 
 import numpy as np
 from array import array
-import protobuf
+from . import protobuf
 
 
 def dense(query, block, length):
@@ -16,7 +16,7 @@ def dense(query, block, length):
     offset = 0
 
     while offset < length:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
             elemid, offset = protobuf.large_packed(block, offset, l, "sint64", delta=True)
@@ -59,7 +59,7 @@ def dense_info(block, offset, length, query):
         return message_offset, version, time, change
 
     while offset < message_offset:
-        key, offset, l = protobuf.get_key(block, offset)
+        key, offset, l = protobuf.pbf_key(block, offset)
 
         if key == 1:
             version, offset = protobuf.large_packed(block, offset, l, "int32")
