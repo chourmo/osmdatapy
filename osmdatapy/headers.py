@@ -3,7 +3,7 @@ import zlib
 import array
 import numpy as np
 
-from osmdatapy.protobuf import scalar, get_key, bytelist, large_packed
+from . import protobuf
 
 
 def parse_header(data):
@@ -15,7 +15,7 @@ def parse_header(data):
 
     while offset < length:
 
-        key, offset, l = get_key(data, offset)
+        key, offset, l = protobuf.get_key(data, offset)
         if key == 1:
             string = bytearray(data[offset : offset + l]).decode()
             offset += l
@@ -23,7 +23,7 @@ def parse_header(data):
             b = bytearray(data[offset : offset + l])
             offset += l
         elif key == 3:
-            datasize, offset = scalar(data, offset, "int32")
+            datasize, offset = protobuf.scalar(data, offset, "int32")
         else:
             offset += l
 
@@ -39,7 +39,7 @@ def parse_blob(data):
     compression = None
 
     while offset < length:
-        key, offset, l = get_key(data, offset)
+        key, offset, l = protobuf.get_key(data, offset)
 
         if key == 1:
             st_offset = offset
@@ -47,7 +47,7 @@ def parse_blob(data):
             res = data[offset : offset + l]
             offset += l
         elif key == 2:
-            datasize, offset = scalar(data, offset, "int32")
+            datasize, offset = protobuf.scalar(data, offset, "int32")
         elif key == 3:
             st_offset = offset
             end_offset = offset + l
@@ -98,7 +98,7 @@ def parse_blockheader(data, compression):
         length = len(block_data)
 
     while offset < length:
-        key, offset, l = get_key(d, offset)
+        key, offset, l = protobuf.get_key(d, offset)
 
         # required features
         if key == 4:
@@ -153,7 +153,7 @@ def parse_cache_block(data, compression="zlib"):
     ids, lons, lats = array.array("q", []), array.array("q", []), array.array("q", [])
 
     while offset < block_length:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.get_key(block, offset)
 
         if key == 1:
             strtable, offset = stringtable(block, offset, l)
@@ -175,13 +175,13 @@ def parse_cache_block(data, compression="zlib"):
                 relations.extend(offset_list)
 
         elif key == 17:
-            granularity, offset = scalar(block, offset, "int32")
+            granularity, offset = protobuf.scalar(block, offset, "int32")
         elif key == 18:
-            date_granularity, offset = scalar(block, offset, "int32")
+            date_granularity, offset = protobuf.scalar(block, offset, "int32")
         elif key == 19:
-            lat_offset, offset = scalar(block, offset, "int64")
+            lat_offset, offset = protobuf.scalar(block, offset, "int64")
         elif key == 20:
-            lon_offset, offset = scalar(block, offset, "int64")
+            lon_offset, offset = protobuf.scalar(block, offset, "int64")
         else:
             offset += l
 
@@ -208,7 +208,7 @@ def _map_coord(coord, gran, offset):
 
 def stringtable(block, offset, length):
 
-    stringtable, offset = bytelist(block, offset, length)
+    stringtable, offset = protobuf.bytelist(block, offset, length)
     stringtable = [bytearray(x) for x in stringtable]
     stringtable = [x.decode("UTF8") for x in stringtable]
 
@@ -250,7 +250,7 @@ def parse_primitive_group(block, offset, length):
     lats = array.array("q", [])
 
     while offset < group_offset:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.get_key(block, offset)
         ref_offset = offset
 
         if key == 1:
@@ -284,13 +284,13 @@ def cached_dense(block, offset, length):
     elemid, lon, lat = [0],[0],[0]
 
     while offset < message_offset:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.get_key(block, offset)
         if key == 1:
-            elemid, offset = large_packed(block, offset, l, "sint64", delta=True)
+            elemid, offset = protobuf.large_packed(block, offset, l, "sint64", delta=True)
         elif key == 8:
-            lat, offset = large_packed(block, offset, l, "sint64", delta=True)
+            lat, offset = protobuf.large_packed(block, offset, l, "sint64", delta=True)
         elif key == 9:
-            lon, offset = large_packed(block, offset, l, "sint64", delta=True)
+            lon, offset = protobuf.large_packed(block, offset, l, "sint64", delta=True)
         else:
             offset += l
 
@@ -303,13 +303,13 @@ def cached_node(block, offset, length, res):
     message_offset = offset + length
 
     while offset < message_offset:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.get_key(block, offset)
         if key == 1:
-            elemid, offset = scalar(block, offset, "sint64")
+            elemid, offset = protobuf.scalar(block, offset, "sint64")
         elif key == 8:
-            lat, offset = scalar(block, offset, "sint64")
+            lat, offset = protobuf.scalar(block, offset, "sint64")
         elif key == 9:
-            lon, offset = scalar(block, offset, "sint64")
+            lon, offset = protobuf.scalar(block, offset, "sint64")
         else:
             offset += l
             elemid, lon, lat = 0,0,0
@@ -323,9 +323,9 @@ def cached_relation_or_way(block, offset, length):
     message_offset = offset + length
     elemid=0
     while offset < message_offset:
-        key, offset, l = get_key(block, offset)
+        key, offset, l = protobuf.get_key(block, offset)
         if key == 1:
-            elemid, offset = scalar(block, offset, "int64")
+            elemid, offset = protobuf.scalar(block, offset, "int64")
             return message_offset, elemid
         else:
             offset += l

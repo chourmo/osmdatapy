@@ -1,5 +1,5 @@
 import pandas as pd
-from .datasource import Datasource
+from datasource import Datasource
 
 GEOFABRICK = "https://download.geofabrik.de/index-v1-nogeom.json"
 BBBIKE = "https://raw.githubusercontent.com/wosch/bbbike-world/world/etc/cities.csv"
