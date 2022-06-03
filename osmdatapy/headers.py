@@ -4,7 +4,7 @@ import array
 import numpy as np
 
 import os
-print(os.listdir("./osmdata/"))
+print(os.listdir("./osmdatapy/"))
 
 from osmdatapy.protobuf import pbf_key, scalar, bytelist, large_packed
 
