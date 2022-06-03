@@ -9,14 +9,26 @@ from setuptools.extension import Extension
 from setuptools.command.build_ext import build_ext as _build_ext
 import versioneer
 
-from Cython.Build import cythonize
-
 import os
 
 
-ext_modules=cythonize(Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"]),
-        compiler_directives={"language_level": "3"})
+# import Cython if available
+try:
+    from Cython.Build import cythonize
+    from Cython.Distutils import build_ext as _build_ext
+    USE_CYTHON = True
+except ImportError:
+    USE_CYTHON = False
 
+ext = '.pyx' if USE_CYTHON else '.c'
+ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf"+ext])]
+
+if USE_CYTHON:
+    from Cython.Build import cythonize
+    ext_modules = cythonize(ext_modules, compiler_directives={"language_level": "3"})
+
+
+build_ext = None
 class build_ext(_build_ext):
     def finalize_options(self):
         _build_ext.finalize_options(self)
