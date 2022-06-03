@@ -11,6 +11,7 @@ dependencies:
   - pandas
   - geopandas
   - pygeos
+  - cython
 
     # Datasource
   - aiohttp
