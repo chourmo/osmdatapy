@@ -3,6 +3,9 @@ import zlib
 import array
 import numpy as np
 
+import os
+print(os.listdir("."))
+
 from osmdatapy.protobuf import pbf_key, scalar, bytelist, large_packed
 
 
