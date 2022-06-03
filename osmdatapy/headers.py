@@ -3,7 +3,7 @@ import zlib
 import array
 import numpy as np
 
-from .protobuf import pbf_key, scalar, bytelist, large_packed
+from osmdatapy.protobuf import pbf_key, scalar, bytelist, large_packed
 
 
 def parse_header(data):
