@@ -59,7 +59,7 @@ def way(block, length, query):
             elemid, offset = protobuf.scalar(block, offset, "int64")
 
         elif key == 2 and query["get_tags"]:
-            tags, offset = packed(block, offset, l, "uint32")
+            tags, offset = protobuf.packed(block, offset, l, "uint32")
             tag_set = set(tags)
             if not _validate_tag(tag_set, query["must_tags"]):
                 return None

@@ -3,43 +3,39 @@ osmdatapy
 A fast and simple way to parse OSM data from pbf files into Pandas Dataframes
 """
 import sys
+import builtins
 from setuptools import setup, find_packages
 from setuptools.extension import Extension
+from setuptools.command.build_ext import build_ext as _build_ext
 import versioneer
 
 from Cython.Build import cythonize
 
 import os
 
-# Get numpy include directory without importing numpy at top level here
-# from: https://stackoverflow.com/a/42163080
 
-try:
-    from Cython.setuptools import build_ext
-except:
-    # If we couldn't import Cython, use the normal setuptools
-    # and look for a pre-compiled .c file instead of a .pyx file
-    from setuptools.command.build_ext import build_ext
-    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.c"])]
-else:
-    # If we successfully imported Cython, look for a .pyx file
-    ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"])]
-
-ext_modules+=cythonize(Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"]),
+ext_modules=cythonize(Extension("osmdatapy.protobuf", ["osmdatapy/protobuf.pyx"]),
         compiler_directives={"language_level": "3"})
 
-class CustomBuildExtCommand(build_ext):
-    """build_ext command for use when numpy headers are needed."""
-    def run(self):
+class build_ext(_build_ext):
+    def finalize_options(self):
+        _build_ext.finalize_options(self)
 
-        # Import numpy here, only when headers are needed
+        # Add numpy include dirs without importing numpy on module level.
+        # derived from scikit-hep:
+        # https://github.com/scikit-hep/root_numpy/pull/292
+
+        # Prevent numpy from thinking it is still in its setup process:
+        try:
+            del builtins.__NUMPY_SETUP__
+        except AttributeError:
+            pass
+
         import numpy
 
-        # Add numpy headers to include_dirs
         self.include_dirs.append(numpy.get_include())
 
-        # Call original build_ext command
-        build_ext.run(self)
+
 
 short_description = "A fast and simple way to parse OSM data from pbf files into Pandas Dataframes".split("\n")[0]
 
@@ -84,7 +80,7 @@ setup(
     # Required packages, pulls from pip if needed; do not use for Conda deployment
     install_requires=["numpy", "pandas", "geopandas>=0.10.0", "pygeos"],
     python_requires=">=3.9",          # Python version restrictions
-    ext_modules=ext_modules, #cythonize(os.path.join("osmdatapy", "*.pyx"), compiler_directives={"language_level": "3"}),
+    ext_modules=ext_modules,
 
     # Manual control if final package is compressible or not, set False to prevent the .egg from being made
     zip_safe=False,
