@@ -21768,7 +21768,7 @@ if (!__Pyx_RefNanny) {
  * from libc.stdint cimport *
  * from cpython cimport array
  * import array             # <<<<<<<<<<<<<<
- * import cython
+ * cimport cython
  * 
  */
   __pyx_t_1 = __Pyx_Import(__pyx_n_s_array, 0, 0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 6, __pyx_L1_error)

@@ -4,7 +4,7 @@
 from libc.stdint cimport *
 from cpython cimport array
 import array
-import cython
+cimport cython
 
 @cython.boundscheck(False)
 def packed(const unsigned char[:] block not None, Py_ssize_t offset, Py_ssize_t length, str scalar_type, bint delta=False):
