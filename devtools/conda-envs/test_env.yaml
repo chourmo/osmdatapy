@@ -11,21 +11,14 @@ dependencies:
   - pandas
   - geopandas
   - pygeos
-  - cython
 
     # Datasource
   - aiohttp
-
 
     # Testing
   - pytest
   - pytest-cov
   - codecov
 
-    # Development
-  - cython
-
     # Pip-only installs
   #- pip:
-  #  - codecov
-
