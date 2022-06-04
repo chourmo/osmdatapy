@@ -6,7 +6,6 @@ channels:
 dependencies:
     # Base
   - python>=3.9
-  - pip
   - numpy
   - pandas
   - geopandas
@@ -16,6 +15,7 @@ dependencies:
   - aiohttp
 
     # Testing
+  - pip
   - pytest
   - pytest-cov
   - codecov

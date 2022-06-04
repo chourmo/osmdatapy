@@ -90,7 +90,7 @@ setup(
     url='https://github.com/chourmo/osmdatapy',  # Website
     
     # Required packages, pulls from pip if needed; do not use for Conda deployment
-    install_requires=["numpy", "pandas", "geopandas>=0.10.0", "pygeos"],
+    install_requires=["numpy", "pandas", "geopandas>=0.10.0", "pygeos", "aiohttp"],
     python_requires=">=3.9",          # Python version restrictions
     ext_modules=ext_modules,
 
