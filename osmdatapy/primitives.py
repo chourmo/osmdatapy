@@ -70,7 +70,7 @@ def way(block, length, query):
         elif key == 4 and query["metadata"]:
             offset, version, time, change = info(block, offset, l, query)
 
-        elif key == 8:
+        elif key == 8 and query["geometry"]:
             mems, offset = protobuf.packed(block, offset, l, "sint64", True)
 
             # ways must have at least 2 points

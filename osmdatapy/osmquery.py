@@ -258,7 +258,7 @@ class Query:
 
         if not q["nodes"]:
             q["node_offsets"] = []
-            len(q["dense_offsets"]) ==0
+            q["dense_offsets"] = None
         elif q["node_set"]:
             q["node_offsets"] = [
                 n for n in block["node_offsets"] if n[0] in q["node_set"]

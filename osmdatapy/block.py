@@ -24,11 +24,12 @@ def parse_block(data, strmap, query, compression="zlib"):
         raise NotImplementedError("Compression {0} not implemented".format(compression))
 
     res = []
+    geom = query['geometry']
 
     i = query["node_offsets"]
     pack_nodes(res, [node(bl[p : p + l], l, query) for eid, p, l in i], strmap)
     i = query["way_offsets"]
-    pack_ways(res, [way(bl[p : p + l], l, query) for eid, p, l in i], strmap)
+    pack_ways(res, [way(bl[p : p + l], l, query) for eid, p, l in i], strmap, geom)
     i = query["rel_offsets"]
     pack_rels(res, [relation(bl[p : p + l], l, query) for eid, p, l in i], strmap)
     pack_dense(res, dense, query, bl, strmap)
@@ -39,7 +40,7 @@ def parse_block(data, strmap, query, compression="zlib"):
 def pack_nodes(res, nodes, strmap):
     """Merge list of nodes in a result tuple"""
 
-    if nodes is None or not nodes:
+    if nodes is None or not nodes or len(nodes)==0:
         return None
     ids, meta, tags, vals = zip(*[x for x in nodes if x])
     l= len(ids)
@@ -52,20 +53,25 @@ def pack_nodes(res, nodes, strmap):
     res.append((ids, pack_tags(tags, vals, strmap, l), relres))
 
 
-def pack_ways(res, ways, strmap):
+def pack_ways(res, ways, strmap, geometry):
     """Merge list of ways in a result tuple"""
 
-    if ways is None or not ways:
+    if _is_empty_list(ways):
         return None
-    ids, meta, tags, vals, mems, geoms = zip(*[x for x in ways if x])
+
+    ids, meta, tags, vals, mems, geoms = zip(*[x for x in ways if x is not None])
+
     l = len(ids)
 
     ids = pack_ids(1, ids, meta)
-    relids = _local_ids(l, mems)
-
-    z = np.zeros(len(relids), dtype="int")
-    g = np.repeat(geoms, [len(x) for x in mems])
-    relres = np.array([relids, np.hstack(mems), z, z, g]).T
+    
+    if geometry:
+        relids = _local_ids(l, mems)
+        z = np.zeros(len(relids), dtype="int")
+        g = np.repeat(geoms, [len(x) for x in mems])
+        relres = np.array([relids, np.hstack(mems), z, z, g]).T
+    else:
+        relres = None
 
     res.append((ids, pack_tags(tags, vals, strmap, l), relres))
 
@@ -73,7 +79,7 @@ def pack_ways(res, ways, strmap):
 def pack_rels(res, rels, strmap):
     """Merge list of ways in a result tuple"""
 
-    if rels is None or not rels:
+    if rels is None or not rels or len(rels)==0:
         return None
     ids, meta, tags, vals, mems, types, roles, geoms = zip(*[x for x in rels if x])
     l = len(ids)
@@ -123,3 +129,8 @@ def pack_ids(osmtype, ids, meta):
     if not meta:
         return np.column_stack([ids, types])
     return np.column_stack([ids, types, np.hstack(list(meta)).reshape((l, 3))])
+
+def _is_empty_list(results):
+    if results is None or not results :
+        return True
+    return len([x for x in results if x is not None])==0
