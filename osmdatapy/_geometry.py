@@ -1,7 +1,12 @@
+import os
+
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-import pygeos as pg
+#import pygeos as pg
+
+os.environ["USE_PYGEOS"] = "0"
+import shapely as pg
 
 
 def points(df, crs, coords, multi_indices=None):
@@ -16,7 +21,7 @@ def points(df, crs, coords, multi_indices=None):
     multi-indices : optional index to group points in multi-points
     """
 
-    geoms = pg.points(coords)  #  indices=_simple_ix(df[indices])
+    geoms = pg.points(coords)
     res, geoms = collect_by_indices(df.copy(), geoms, multi_indices)
     return res.set_geometry(gpd.array.GeometryArray(geoms), crs)
 
