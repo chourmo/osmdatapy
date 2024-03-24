@@ -3,10 +3,8 @@ import os
 import numpy as np
 import pandas as pd
 import geopandas as gpd
-#import pygeos as pg
 
-os.environ["USE_PYGEOS"] = "0"
-import shapely as pg
+import shapely as sh
 
 
 def points(df, crs, coords, multi_indices=None):
@@ -21,7 +19,7 @@ def points(df, crs, coords, multi_indices=None):
     multi-indices : optional index to group points in multi-points
     """
 
-    geoms = pg.points(coords)
+    geoms = sh.points(coords)
     res, geoms = collect_by_indices(df.copy(), geoms, multi_indices)
     return res.set_geometry(gpd.array.GeometryArray(geoms), crs)
 
@@ -39,7 +37,7 @@ def linestrings(df, crs, coords, indices, multi_indices=None):
     multi-indices : optional index to group points in multi-linestrings
     """
 
-    geoms = pg.linestrings(coords, indices=_simple_ix(df[indices]))
+    geoms = sh.linestrings(coords, indices=_simple_ix(df[indices]))
     res = df.drop_duplicates(subset=indices)
     res, geoms = collect_by_indices(res, geoms, multi_indices)
     return res.set_geometry(gpd.array.GeometryArray(geoms), crs)
@@ -58,10 +56,10 @@ def polygons(df, crs, coords, ring_indices, polygon_indices, multi_indices=None)
     multi-indices : optional index to group points in multi-poolygons
     """
 
-    geoms = pg.linearrings(coords, indices=_simple_ix(df[ring_indices]))
+    geoms = sh.linearrings(coords, indices=_simple_ix(df[ring_indices]))
     res = df.drop_duplicates(subset=ring_indices, ignore_index=True)
 
-    geoms = pg.polygons(geoms, indices=_simple_ix(res[polygon_indices]))
+    geoms = sh.polygons(geoms, indices=_simple_ix(res[polygon_indices]))
     res = res.drop_duplicates(subset=polygon_indices, ignore_index=True)
 
     res, geoms = collect_by_indices(res, geoms, multi_indices)
@@ -88,17 +86,17 @@ def collect_by_indices(df, geoms, indices):
     multi_res = res.loc[res[indices].isin(dup.loc[dup > 1].index)].copy()
     geoms = geoms[multi_res.index.to_list()].copy()
 
-    geom_types = np.unique(pg.get_type_id(geoms))
+    geom_types = np.unique(sh.get_type_id(geoms))
 
     if len(geom_types) > 1:
         raise ValueError("geoms array must have a single geom type")
 
     if geom_types[0] == 0:
-        geoms = pg.multipoints(geoms, indices=_simple_ix(multi_res[indices]))
+        geoms = sh.multipoints(geoms, indices=_simple_ix(multi_res[indices]))
     elif geom_types[0] == 1:
-        geoms = pg.multilinestrings(geoms, indices=_simple_ix(multi_res[indices]))
+        geoms = sh.multilinestrings(geoms, indices=_simple_ix(multi_res[indices]))
     elif geom_types[0] == 3:
-        geoms = pg.multipolygons(geoms, indices=_simple_ix(multi_res[indices]))
+        geoms = sh.multipolygons(geoms, indices=_simple_ix(multi_res[indices]))
     else:
         raise ValueError("geom_type must be Point, Linestring or Polygon")
 
