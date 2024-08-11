@@ -1,2 +1,21 @@
 [build-system]
 requires = ["setuptools", "wheel", "Cython>=0.29", "numpy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "osmdatapy"
+version = "0.1.0"
+authors = [{ name = "Vincent Tinet" }]
+description = "A fast and simple way to parse OSM data from pbf files into Pandas Dataframess"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = ["numpy", "pandas", "geopandas>=0.10.0", "shapely", "aiohttp"]
+
+[project.urls]
+Homepage = "https://github.com/chourmo/netpandas"
+Issues = "https://github.com/chourmo/netpandas/issues"
