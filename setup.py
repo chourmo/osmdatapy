@@ -6,9 +6,10 @@ A fast and simple way to parse OSM data from pbf files into Pandas Dataframes
 
 from setuptools import setup
 from Cython.Build import cythonize
+import numpy
 
 setup(
-    ext_modules = cythonize("protobuf.pyx")
+    ext_modules = cythonize("./osmdatapy/protobuf.pyx", include_path = [numpy.get_include()])
 )
 
 """
