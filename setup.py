@@ -3,19 +3,9 @@ osmdatapy
 A fast and simple way to parse OSM data from pbf files into Pandas Dataframes
 """
 
-
-from setuptools import setup
-from Cython.Build import cythonize
-import numpy
-
-setup(
-    ext_modules = cythonize("./osmdatapy/protobuf.pyx", include_path = [numpy.get_include()])
-)
-
-"""
 import builtins
-from setuptools.extension import Extension
 from setuptools.command.build_ext import build_ext as _build_ext
+from setuptools import Extension, setup, find_packages
 
 
 # import Cython if available
@@ -28,7 +18,7 @@ except ImportError:
     USE_CYTHON = False
 
 ext = ".pyx" if USE_CYTHON else ".c"
-ext_modules = [Extension("osmdatapy.protobuf", ["osmdatapy/protobuf" + ext])]
+ext_modules = [Extension(name="osmdatapy.protobuf", sources=["osmdatapy/protobuf" + ext])]
 
 if USE_CYTHON:
     from Cython.Build import cythonize
@@ -37,7 +27,6 @@ if USE_CYTHON:
 
 
 build_ext = None
-
 
 class build_ext(_build_ext):
     def finalize_options(self):
@@ -56,4 +45,5 @@ class build_ext(_build_ext):
         import numpy
 
         self.include_dirs.append(numpy.get_include())
-"""
+
+setup(ext_modules = ext_modules, packages=find_packages())
