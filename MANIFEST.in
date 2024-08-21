@@ -1,0 +1,2 @@
+include osmdatapy/*.pyx osmdatapy/*.pxd
+exclude osmdatapy/*.c
