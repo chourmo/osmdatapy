@@ -1,5 +1,4 @@
 import zlib
-import array
 import numpy as np
 
 from .primitives import node, way, relation
@@ -43,14 +42,14 @@ def pack_nodes(res, nodes, strmap):
     if nodes is None or not nodes or len(nodes)==0:
         return None
     ids, meta, tags, vals = zip(*[x for x in nodes if x])
-    l= len(ids)
+    id_length= len(ids)
 
     ids = pack_ids(0, ids, meta)
-    relids = np.repeat(range(l), 0)
-    z = np.zeros(l, dtype="int")
+    relids = np.repeat(range(id_length), 0)
+    z = np.zeros(id_length, dtype="int")
     relres = np.array([relids, z, z, z, z])
 
-    res.append((ids, pack_tags(tags, vals, strmap, l), relres))
+    res.append((ids, pack_tags(tags, vals, strmap, id_length), relres))
 
 
 def pack_ways(res, ways, strmap, geometry):
@@ -61,19 +60,19 @@ def pack_ways(res, ways, strmap, geometry):
 
     ids, meta, tags, vals, mems, geoms = zip(*[x for x in ways if x is not None])
 
-    l = len(ids)
+    id_length = len(ids)
 
     ids = pack_ids(1, ids, meta)
     
     if geometry:
-        relids = _local_ids(l, mems)
+        relids = _local_ids(id_length, mems)
         z = np.zeros(len(relids), dtype="int")
         g = np.repeat(geoms, [len(x) for x in mems])
         relres = np.array([relids, np.hstack(mems), z, z, g]).T
     else:
         relres = None
 
-    res.append((ids, pack_tags(tags, vals, strmap, l), relres))
+    res.append((ids, pack_tags(tags, vals, strmap, id_length), relres))
 
 
 def pack_rels(res, rels, strmap):
@@ -82,23 +81,23 @@ def pack_rels(res, rels, strmap):
     if rels is None or not rels or len(rels)==0:
         return None
     ids, meta, tags, vals, mems, types, roles, geoms = zip(*[x for x in rels if x])
-    l = len(ids)
+    id_length = len(ids)
 
     ids = pack_ids(2, ids, meta)
     roles = strmap[np.hstack(roles)]
-    relids = _local_ids(l, mems)
+    relids = _local_ids(id_length, mems)
     g = np.repeat(geoms, [len(x) for x in mems])
     relres = np.array([relids, np.hstack(mems), np.hstack(types), roles, g]).T
 
-    res.append((ids, pack_tags(tags, vals, strmap, l), relres))
+    res.append((ids, pack_tags(tags, vals, strmap, id_length), relres))
 
 
 def pack_dense(res, dense, query, block, strmap):
     if query["dense_offsets"] is None:
         return None
 
-    offset, l = query["dense_offsets"]
-    ids, tags, rels = dense(query, block[offset : offset + l], l)
+    offset, id_length = query["dense_offsets"]
+    ids, tags, rels = dense(query, block[offset : offset + id_length], id_length)
 
     tags[:, 1] = strmap[tags[:, 1]]
     tags[:, 2] = strmap[tags[:, 2]]
@@ -110,7 +109,7 @@ def _local_ids(id_length, array):
     return np.repeat(range(id_length), np.array([len(x) for x in array]))
 
 
-def pack_tags(tags, vals, strmap, l):
+def pack_tags(tags, vals, strmap, id_length):
     if tags is None:
         return None
 
@@ -118,17 +117,17 @@ def pack_tags(tags, vals, strmap, l):
     if not t:
         return None
     v = [x for x in vals if x is not None]
-    tagids = _local_ids(l, t)
+    tagids = _local_ids(id_length, t)
     return np.column_stack([tagids, strmap[np.hstack(t)], strmap[np.hstack(v)]])
 
 
 def pack_ids(osmtype, ids, meta):
-    l = len(ids)
-    types = np.repeat(osmtype, l)
-    meta = v = [x for x in meta if x]
+    id_length = len(ids)
+    types = np.repeat(osmtype, id_length)
+    meta = [x for x in meta if x]
     if not meta:
         return np.column_stack([ids, types])
-    return np.column_stack([ids, types, np.hstack(list(meta)).reshape((l, 3))])
+    return np.column_stack([ids, types, np.hstack(list(meta)).reshape((id_length, 3))])
 
 def _is_empty_list(results):
     if results is None or not results :

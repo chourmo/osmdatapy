@@ -15,17 +15,17 @@ def parse_header(data):
 
     while offset < length:
 
-        key, offset, l = pbf_key(data, offset)
+        key, offset, id_length = pbf_key(data, offset)
         if key == 1:
-            string = bytearray(data[offset : offset + l]).decode()
-            offset += l
+            string = bytearray(data[offset : offset + id_length]).decode()
+            offset += id_length
         elif key == 2:
-            b = bytearray(data[offset : offset + l])
-            offset += l
+            b = bytearray(data[offset : offset + id_length])
+            offset += id_length
         elif key == 3:
             datasize, offset = scalar(data, offset, "int32")
         else:
-            offset += l
+            offset += id_length
 
     return (datasize, string)
 
@@ -39,41 +39,41 @@ def parse_blob(data):
     compression = None
 
     while offset < length:
-        key, offset, l = pbf_key(data, offset)
+        key, offset, id_length = pbf_key(data, offset)
 
         if key == 1:
             st_offset = offset
-            end_offset = offset + l
-            res = data[offset : offset + l]
-            offset += l
+            end_offset = offset + id_length
+            res = data[offset : offset + id_length]
+            offset += id_length
         elif key == 2:
             datasize, offset = scalar(data, offset, "int32")
         elif key == 3:
             st_offset = offset
-            end_offset = offset + l
-            res = data[offset : offset + l]
-            offset += l
+            end_offset = offset + id_length
+            res = data[offset : offset + id_length]
+            offset += id_length
             compression = "zlib"
         elif key == 4:
             st_offset = offset
-            end_offset = offset + l
-            res = data[offset : offset + l]
-            offset += l
+            end_offset = offset + id_length
+            res = data[offset : offset + id_length]
+            offset += id_length
             compression = "lzma"
         elif key == 6:
             st_offset = offset
-            end_offset = offset + l
-            res = data[offset : offset + l]
-            offset += l
+            end_offset = offset + id_length
+            res = data[offset : offset + id_length]
+            offset += id_length
             compression = "lz4"
         elif key == 7:
             st_offset = offset
-            end_offset = offset + l
-            res = data[offset : offset + l]
-            offset += l
+            end_offset = offset + id_length
+            res = data[offset : offset + id_length]
+            offset += id_length
             compression = "ztsd"
         else:
-            offset += l
+            offset += id_length
 
     return st_offset, end_offset, compression, res
 
@@ -98,24 +98,24 @@ def parse_blockheader(data, compression):
         length = len(block_data)
 
     while offset < length:
-        key, offset, l = pbf_key(d, offset)
+        key, offset, id_length = pbf_key(d, offset)
 
         # required features
         if key == 4:
-            val = bytearray(d[offset : offset + l]).decode()
-            offset += l
+            val = bytearray(d[offset : offset + id_length]).decode()
+            offset += id_length
             features.append(val)
 
         # optional features
         elif key == 5:
-            val = bytearray(d[offset : offset + l]).decode()
-            offset += l
+            val = bytearray(d[offset : offset + id_length]).decode()
+            offset += id_length
             opt_features.append(val)
         else:
-            offset += l
+            offset += id_length
 
     for feat in features:
-        if not (feat in ["OsmSchema-V0.6", "DenseNodes"]):
+        if feat not in ["OsmSchema-V0.6", "DenseNodes"]:
             raise NotImplementedError("Feature {0} not implemented".format(feat))
 
     return features, opt_features
@@ -153,12 +153,12 @@ def parse_cache_block(data, compression="zlib"):
     ids, lons, lats = array.array("q", []), array.array("q", []), array.array("q", [])
 
     while offset < block_length:
-        key, offset, l = pbf_key(block, offset)
+        key, offset, id_length = pbf_key(block, offset)
 
         if key == 1:
-            strtable, offset = stringtable(block, offset, l)
+            strtable, offset = stringtable(block, offset, id_length)
         elif key == 2:
-            offset, osm_id, offset_list, ids, lons, lats = parse_primitive_group(block, offset, l)
+            offset, osm_id, offset_list, ids, lons, lats = parse_primitive_group(block, offset, id_length)
             if osm_id==1:
                 nodes.extend(offset_list)
                 ids.extend(ids)
@@ -183,7 +183,7 @@ def parse_cache_block(data, compression="zlib"):
         elif key == 20:
             lon_offset, offset = scalar(block, offset, "int64")
         else:
-            offset += l
+            offset += id_length
 
     metadata = {
         "stringtable": strtable,
@@ -250,26 +250,26 @@ def parse_primitive_group(block, offset, length):
     lats = array.array("q", [])
 
     while offset < group_offset:
-        key, offset, l = pbf_key(block, offset)
+        key, offset, id_length = pbf_key(block, offset)
         ref_offset = offset
 
         if key == 1:
-            offset, elemid, lon, lat = cached_node(block, offset, l)
-            results.append((elemid, ref_offset, l))
+            offset, elemid, lon, lat = cached_node(block, offset, id_length)
+            results.append((elemid, ref_offset, id_length))
             ids.append(elemid)
             lons.append(lon)
             lats.append(lat)
         elif key == 2:
-            offset, elemid, lon, lat = cached_dense(block, offset, l)
-            results.append((ref_offset, l))
+            offset, elemid, lon, lat = cached_dense(block, offset, id_length)
+            results.append((ref_offset, id_length))
             ids.extend(elemid)
             lons.extend(lon)
             lats.extend(lat)
         elif key == 3 or key == 4:
-            offset, elemid = cached_relation_or_way(block, offset, l)
-            results.append((elemid, ref_offset, l))
+            offset, elemid = cached_relation_or_way(block, offset, id_length)
+            results.append((elemid, ref_offset, id_length))
         else:
-            offset += l
+            offset += id_length
 
     if key==2:
         results = results[0]
@@ -284,15 +284,15 @@ def cached_dense(block, offset, length):
     elemid, lon, lat = [0],[0],[0]
 
     while offset < message_offset:
-        key, offset, l = pbf_key(block, offset)
+        key, offset, id_length = pbf_key(block, offset)
         if key == 1:
-            elemid, offset = large_packed(block, offset, l, "sint64", delta=True)
+            elemid, offset = large_packed(block, offset, id_length, "sint64", delta=True)
         elif key == 8:
-            lat, offset = large_packed(block, offset, l, "sint64", delta=True)
+            lat, offset = large_packed(block, offset, id_length, "sint64", delta=True)
         elif key == 9:
-            lon, offset = large_packed(block, offset, l, "sint64", delta=True)
+            lon, offset = large_packed(block, offset, id_length, "sint64", delta=True)
         else:
-            offset += l
+            offset += id_length
 
     return message_offset, elemid, lon, lat
 
@@ -303,7 +303,7 @@ def cached_node(block, offset, length, res):
     message_offset = offset + length
 
     while offset < message_offset:
-        key, offset, l = pbf_key(block, offset)
+        key, offset, id_length = pbf_key(block, offset)
         if key == 1:
             elemid, offset = scalar(block, offset, "sint64")
         elif key == 8:
@@ -311,7 +311,7 @@ def cached_node(block, offset, length, res):
         elif key == 9:
             lon, offset = scalar(block, offset, "sint64")
         else:
-            offset += l
+            offset += id_length
             elemid, lon, lat = 0,0,0
 
     return message_offset, elemid, lon, lat
@@ -323,10 +323,10 @@ def cached_relation_or_way(block, offset, length):
     message_offset = offset + length
     elemid=0
     while offset < message_offset:
-        key, offset, l = pbf_key(block, offset)
+        key, offset, id_length = pbf_key(block, offset)
         if key == 1:
             elemid, offset = scalar(block, offset, "int64")
             return message_offset, elemid
         else:
-            offset += l
+            offset += id_length
     return message_offset, elemid
