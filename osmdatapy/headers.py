@@ -17,17 +17,17 @@ def parse_header(data):
 
         key, offset, id_length = pbf_key(data, offset)
         if key == 1:
-            string = bytearray(data[offset : offset + id_length]).decode()
+            result = bytearray(data[offset : offset + id_length]).decode()
             offset += id_length
         elif key == 2:
-            b = bytearray(data[offset : offset + id_length])
+            result = bytearray(data[offset : offset + id_length])
             offset += id_length
         elif key == 3:
             datasize, offset = scalar(data, offset, "int32")
         else:
             offset += id_length
 
-    return (datasize, string)
+    return (datasize, result)
 
 
 def parse_blob(data):
